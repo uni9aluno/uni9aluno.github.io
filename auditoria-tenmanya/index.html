@@ -666,7 +666,7 @@ details.apx[open]>summary::before{content:"−"}
     <tr><td>Produto desktop</td><td class="num">0,50 s</td><td class="num">0,016</td><td class="num">2,0 MB</td><td class="num">1.000 KB</td><td class="num">357 KB</td><td class="num">268 KB</td><td class="num">53</td></tr>
   </tbody>
 </table></div>
-<p class="note">* Mobile com latência de 150 ms, 1,6 Mbps e CPU 4x mais lenta. Valores de uma execução, sem dado de campo. Terceiros: tag de consentimento AdOpt (266 KB, o maior item de terceiro), Bitrix24 (60 KB), Clarity (25 KB), Google Analytics (21 KB). INP não é medido em laboratório.</p>
+<p class="note">* Mobile com latência de 150 ms, 1,6 Mbps e CPU 4x mais lenta. Valores de uma execução, sem dado de campo; o apêndice de performance traz medianas de 3 execuções (LCP mobile 2,5–3,4 s; CLS da home desktop 0,299 em 3 de 3). Terceiros: tag de consentimento AdOpt (266 KB, o maior item de terceiro), Bitrix24 (60 KB), Clarity (25 KB), Google Analytics (21 KB). INP não é medido em laboratório.</p>
 <div class="callout warn">
   <h4>Consentimento de cookies (LGPD)</h4>
   <p>Comprovado em 06/11/2026: Google Analytics e Microsoft Clarity enviaram requisições sem que o banner tivesse sido respondido. O banner informa compartilhamento de dados com o Google para publicidade, está em inglês e oferece "Do not sell", opção da legislação da Califórnia. Recomendação: texto em português com as finalidades reais, bloqueio de tags de marketing e gravação de sessão até o aceite, e registro da escolha. A base legal para métricas estritamente analíticas deve ser definida pelo Encarregado (DPO).</p>
@@ -709,8 +709,10 @@ details.apx[open]>summary::before{content:"−"}
     <tr data-p="P1"><td>C-14</td><td>Filtros mobile</td><td>Opções com 14 px de altura de toque, texto #ABABAB (2,3:1), sem contagem; botão sem número de resultados.</td><td>Medição no painel mobile.</td><td>Erro de toque, leitura difícil, tentativa e erro.</td><td>Painel conforme seção F: blocos de 44 px, contagem ao vivo.</td><td><span class="tag P1">P1</span></td><td>Médio</td><td>Uso de filtros no mobile; tempo até o primeiro clique em produto.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P1"><td>C-20</td><td>Busca sem resultado</td><td>Página mostra seletor vazio, &quot;Filtros aplicados&quot; sem filtros e apenas &quot;Ir para a página inicial&quot;.</td><td>Busca por &quot;asdfgh&quot;.</td><td>Sessão termina sem alternativa.</td><td>Mensagem com o termo, sugestões de grafia, categorias principais, mais vendidos e contato.</td><td><span class="tag P1">P1</span></td><td>Baixo</td><td>Saída após busca sem resultado.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P1"><td>C-21</td><td>Comunicação de origem</td><td>&quot;Direto do Japão&quot; e &quot;todos importados diretamente do Japão&quot; convivem com &quot;em maioria importados&quot;; 8 de 30 PDPs amostradas informam &quot;Origem: China&quot;.</td><td>Home, Quem somos, Nossas lojas e seção Características de 30 PDPs (subagente de catálogo).</td><td>Risco de publicidade enganosa (CDC art. 37) e de confiança.</td><td>Origem como atributo por produto; frase institucional precisa; validação de Compras e Jurídico.</td><td><span class="tag P1">P1</span></td><td>Baixo</td><td>Divergências resolvidas.</td><td><span class="tag t-c">Comprovado</span></td></tr>
+    <tr data-p="P1"><td>C-22</td><td>Home desktop › banner</td><td>CLS de 0,299 (3 de 3 execuções): antes do Swiper iniciar, o slide aparece com 135 px e depois passa a 638 px, empurrando a página cerca de 500 px. O banner do LCP pesa 1,52 MB e nenhuma imagem do site usa srcset.</td><td>Linha do tempo de layout-shift × inicialização do Swiper (subagente de performance).</td><td>Instabilidade visual e carga pesada em conexões piores.</td><td>CSS que reserve a altura final do carrossel antes do JS (estimativa: CLS 0,299 → ~0,01); recomprimir banners e usar srcset (até −1,3 MB no banner do LCP).</td><td><span class="tag P1">P1</span></td><td>Baixo</td><td>CLS e LCP p75 (campo).</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P1"><td>C-28</td><td>SEO › headings e títulos</td><td>Home sem H1; só 13 de 82 listagens têm H1 real; o título &quot;Institucional&quot; do rodapé vira H1 em 60 de 150 páginas; title vazio em 37 de 150 URLs (listas, institucionais, políticas e 2 PDPs).</td><td>Amostra de 150 URLs (subagente de SEO).</td><td>Sinais fracos e conflitantes de relevância.</td><td>H1 visível no topo de cada modelo; rodapé sem heading de nível 1; title e descrição em todas as páginas indexáveis.</td><td><span class="tag P1">P1</span></td><td>Baixo</td><td>Cobertura no Search Console; páginas com title único.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P1"><td>C-29</td><td>SEO › canonical e dados estruturados</td><td>Canonical em http:// em 190 de 190 páginas e na url do JSON-LD; JSON-LD de produto com erros em 20 de 20 PDPs (aggregateRating 0/0, priceValidUntil fora do formato ISO, price com espaço, entidades HTML); breadcrumb com o primeiro item sem nome e o último rotulado &quot;Página Inicial&quot;.</td><td>Código-fonte de 190 páginas (subagente de SEO).</td><td>Perda de resultados avançados e sinais conflitantes.</td><td>Canonical https; JSON-LD válido em UTF-8 sem avaliação vazia; corrigir rótulos do breadcrumb.</td><td><span class="tag P1">P1</span></td><td>Baixo</td><td>Erros no relatório de resultados avançados.</td><td><span class="tag t-c">Comprovado</span></td></tr>
+    <tr data-p="P1"><td>C-35</td><td>Performance mobile</td><td>LCP de 2,5 a 3,4 s e TBT de 1,5 a 3,0 s (mediana de 3 execuções, laboratório). estilos.css tem 1,2 MB descompactado (91–93% não usado), bloqueia a renderização e é baixado de novo a cada página porque o parâmetro ?v= muda; AdOpt executa 774 KB com tarefa longa de 690–860 ms.</td><td>Cobertura de CSS/JS, long tasks e teste com cache (subagente de performance).</td><td>Primeira pintura atrasada e página travada nos primeiros segundos.</td><td>Versionar o CSS pelo conteúdo, CSS crítico inline e purge; revisar com a AdOpt e o DPO uma carga mais leve do consentimento.</td><td><span class="tag P1">P1</span></td><td>Médio</td><td>LCP, INP e TBT p75 mobile.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P1"><td>C-42</td><td>PLP › paginação</td><td>Na ordenação padrão, /loucas exibe 674 itens em 19 páginas, mas só 520 são produtos diferentes: 154 nunca aparecem para quem pagina. O mesmo ocorre em Mesa, Cozinha, Casa e Japan Lifestyle.</td><td>Varredura completa da paginação (subagente de arquitetura, 06/11/2026); na ordenação A-Z os 674 aparecem.</td><td>Até cerca de 23% de um departamento fica invisível na navegação por páginas.</td><td>Critério de desempate estável na ordenação padrão (ex.: ID do produto); validar com a Linx.</td><td><span class="tag P1">P1</span></td><td>Baixo</td><td>Produtos únicos alcançáveis por paginação = total do departamento.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P1"><td>C-45</td><td>Checkout › mensagens</td><td>O leitor de tela recebe &quot;Pedido realizado com sucesso!&quot; antes de qualquer pagamento (elemento oculto anunciado).</td><td>Árvore de acessibilidade do checkout.</td><td>Usuário de leitor de tela pode abandonar achando que já comprou.</td><td>Remover da árvore de acessibilidade os estados não exibidos.</td><td><span class="tag P1">P1</span></td><td>Baixo</td><td>Teste com leitor de tela.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P1"><td>C-46</td><td>Responsivo e reflow</td><td>A 320 px e com zoom de 200%, as colunas do rodapé ficam cortadas ou exigem rolagem horizontal.</td><td>Teste de reflow (subagente de acessibilidade).</td><td>Políticas e contato inalcançáveis para baixa visão (WCAG 1.4.10).</td><td>Rodapé em coluna única abaixo de 600 px.</td><td><span class="tag P1">P1</span></td><td>Baixo</td><td>Sem rolagem horizontal a 320 px.</td><td><span class="tag t-c">Comprovado</span></td></tr>
@@ -727,7 +729,6 @@ details.apx[open]>summary::before{content:"−"}
     <tr data-p="P2"><td>C-15</td><td>Filtros › estado</td><td>Opção selecionada some da lista; recarregar mantém resultado mas perde rótulo do chip; &quot;Categoria&quot; mostra departamentos de outras árvores; controles diferentes por grupo.</td><td>Teste de seleção, recarga e voltar.</td><td>Cliente perde a noção do que está aplicado.</td><td>Comportamentos da tabela da seção F; filtro em parâmetros de URL.</td><td><span class="tag P2">P2</span></td><td>Médio</td><td>Taxa de &quot;Limpar filtros&quot; logo após aplicar.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P2"><td>C-18</td><td>PDP › hierarquia</td><td>Nome repetido 3 vezes; &quot;Avaliações (0)&quot; em destaque; especificações no fim do texto; parágrafo institucional repetido em todas as descrições.</td><td>3 PDPs analisadas.</td><td>Informação de decisão difícil de achar.</td><td>Estrutura da seção B: fatos-chave, seções expansíveis, avaliações só com conteúdo.</td><td><span class="tag P2">P2</span></td><td>Médio</td><td>Rolagem até especificações; adição à sacola.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P2"><td>C-19</td><td>PDP › dados</td><td>Faca Santoku categorizada como &quot;Nakiri (Legumes)&quot; no breadcrumb e nos dados estruturados; Kimono com marca divergente (texto × dados).</td><td>PDPs de faca e kimono.</td><td>Navegação e SEO apontam para a categoria errada.</td><td>Revisão de categoria principal e marca; regra de validação no cadastro.</td><td><span class="tag P2">P2</span></td><td>Baixo</td><td>Produtos com categoria principal revisada.</td><td><span class="tag t-c">Comprovado</span></td></tr>
-    <tr data-p="P2"><td>C-22</td><td>Home desktop</td><td>CLS de 0,299 e 2,9 MB em imagens na carga.</td><td>Medição de laboratório.</td><td>Instabilidade visual e carga lenta em conexões piores.</td><td>Reservar proporção do carrossel; imagens responsivas AVIF/WebP com srcset; hero único.</td><td><span class="tag P2">P2</span></td><td>Médio</td><td>CLS e LCP p75 (campo).</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P2"><td>C-23</td><td>Frete</td><td>PAC mais caro e igual ou mais lento que a transportadora em 4 de 5 capitais; retirada grátis oferecida até para Manaus sem dizer que a loja fica em São Paulo; prazo de retirada de 5 a 6 dias úteis; 5 ícones com erro 404; total não soma o frete até o clique numa modalidade.</td><td>CEPs públicos de SP, RJ, BH, POA e Manaus na PDP e na sacola (subagente de CRO e coleta própria).</td><td>Opções confusas no momento de decidir.</td><td>Revisar regras com Logística; ordenar por preço e prazo; ocultar opção dominada; rotular a retirada com o endereço; corrigir imagens.</td><td><span class="tag P2">P2</span></td><td>Baixo</td><td>Distribuição de escolha de frete; abandono na sacola.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P2"><td>C-24</td><td>Pagamentos</td><td>Rodapé mostra Boleto e Itaú; checkout lista crédito, débito e PIX; política cita crédito e Pix.</td><td>Rodapé, checkout e política.</td><td>Expectativa frustrada na última etapa.</td><td>Alinhar as três fontes ao que está ativo (a confirmar com Financeiro).</td><td><span class="tag P2">P2</span></td><td>Baixo</td><td>Contatos ao SAC sobre pagamento.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P2"><td>C-25</td><td>Autocomplete</td><td>Cards de produto cortados sem nome e preço; sugestão de termo pior (&quot;Tigelas&quot;).</td><td>Digitação de &quot;tige&quot; no desktop.</td><td>Sugestões pouco úteis.</td><td>Painel com termos, categorias com contagem e produtos completos (seção E).</td><td><span class="tag P2">P2</span></td><td>Médio</td><td>Cliques em sugestões.</td><td><span class="tag t-c">Comprovado</span></td></tr>
@@ -736,11 +737,13 @@ details.apx[open]>summary::before{content:"−"}
     <tr data-p="P2"><td>C-31</td><td>Banners</td><td>Texto, cupom e CTA embutidos na imagem; aviso com códigos internos PRD-00030909.</td><td>Banners da home.</td><td>Ilegível para leitor de tela; difícil de manter; jargão interno exposto.</td><td>Texto em HTML; regras de campanha escritas para o cliente.</td><td><span class="tag P2">P2</span></td><td>Médio</td><td>Cliques no hero por dispositivo.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P2"><td>C-32</td><td>Cabeçalho</td><td>Cabeçalho fixo de 181 px no desktop e 120 px no mobile.</td><td>Medição de elementos fixos.</td><td>Menos área útil para produtos.</td><td>Cabeçalho compacto ao rolar (56 px mobile, 72 px desktop).</td><td><span class="tag P2">P2</span></td><td>Médio</td><td>Rolagem por sessão; CTR da listagem.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P2"><td>C-33</td><td>Home mobile</td><td>Busca escondida atrás de ícone; categorias e vitrines em carrossel de 1 item.</td><td>Captura mobile.</td><td>Descoberta lenta.</td><td>Busca aberta; grade de categorias 4×2; vitrines em grade de 2 colunas.</td><td><span class="tag P2">P2</span></td><td>Médio</td><td>Uso da busca no mobile; cliques em categoria.</td><td><span class="tag t-h">Hipótese</span></td></tr>
-    <tr data-p="P2"><td>C-35</td><td>Performance mobile</td><td>JS de 0,8 a 1,0 MB, CSS de 300 a 357 KB, fontes de 268 KB e tag de consentimento de 266 KB.</td><td>Medição com 4G simulado e CPU 4x.</td><td>LCP de 2,9 a 3,1 s na home e na listagem em laboratório.</td><td>Remover JS e CSS não usados; subset de fontes; carregar tags de terceiros após a renderização.</td><td><span class="tag P2">P2</span></td><td>Médio</td><td>LCP e INP p75 mobile (campo).</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P2"><td>C-51</td><td>Parcelamento</td><td>&quot;6x sem juros&quot; só vale a partir de R$ 300 (parcela mínima R$ 50); banners não trazem a ressalva.</td><td>Política de pagamentos e banners.</td><td>Expectativa frustrada no checkout; risco de comunicação incompleta.</td><td>Exibir &quot;até 6x sem juros, parcela mínima R$ 50&quot; em todos os pontos.</td><td><span class="tag P2">P2</span></td><td>Baixo</td><td>Contatos ao SAC sobre parcelamento.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P2"><td>C-52</td><td>Cadastro</td><td>O cadastro exige data de nascimento e sexo para comprar.</td><td>Formulário de cadastro observado sem preenchimento (subagente de CRO).</td><td>Atrito no cadastro e coleta além do necessário (princípio da necessidade, LGPD).</td><td>Tornar opcionais ou remover; justificar a finalidade de cada dado.</td><td><span class="tag P2">P2</span></td><td>Baixo</td><td>Conclusão do cadastro.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P2"><td>C-55</td><td>Categorias › conteúdo</td><td>4 subcategorias vazias e 27 com menos de 5 produtos (42%); &quot;Gyuto&quot; só com uma santoku, &quot;Panelas&quot; sem panelas, &quot;Kimono&quot; com mais leques que kimonos; panela de arroz Zojirushi em Utensílios.</td><td>Árvore completa com contagem por nó, 1.629 produtos únicos (subagente de arquitetura).</td><td>Navegação leva a páginas vazias ou com produto errado.</td><td>Reclassificar antes da migração; ocultar nós vazios; árvore revisada no apêndice de arquitetura.</td><td><span class="tag P2">P2</span></td><td>Médio</td><td>Nós com 5 ou mais produtos e conteúdo correto.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P2"><td>C-61</td><td>Imagens e compartilhamento</td><td>69% das imagens das PDPs sem alt; nenhuma página com Open Graph; 4 listagens vazias indexáveis.</td><td>Amostra de páginas (subagente de SEO).</td><td>Acessibilidade e prévia ruim ao compartilhar em WhatsApp e redes.</td><td>Alt gerado do nome e da variante; og:title, og:image e og:description por modelo; noindex em listagem vazia.</td><td><span class="tag P2">P2</span></td><td>Baixo</td><td>Cobertura de alt e de Open Graph.</td><td><span class="tag t-c">Comprovado</span></td></tr>
+    <tr data-p="P2"><td>C-62</td><td>Chat Bitrix24</td><td>Carrega cerca de 560 KB por página (96% do CSS e 71% do JS sem uso) e ocupa ~400 ms da main thread no mobile.</td><td>Medição por domínio (subagente de performance).</td><td>Lentidão em todas as páginas por um recurso usado por poucos.</td><td>Carregar o widget só no clique do botão de chat.</td><td><span class="tag P2">P2</span></td><td>Baixo</td><td>Peso e TBT por página.</td><td><span class="tag t-c">Comprovado</span></td></tr>
+    <tr data-p="P2"><td>C-63</td><td>Imagens de primeira dobra</td><td>Na listagem, a imagem do LCP tem loading=&quot;lazy&quot; e só é pedida ~2,2 s após o TTFB; fotos de produto sem Cache-Control e servidas como application/octet-stream.</td><td>Waterfall e cabeçalhos de resposta (subagente de performance).</td><td>Atraso visível dos primeiros produtos; recarga desnecessária de imagens.</td><td>Sem lazy e com fetchpriority=high nas imagens da primeira dobra; cabeçalhos de cache e content-type corretos na CDN.</td><td><span class="tag P2">P2</span></td><td>Baixo</td><td>LCP da listagem.</td><td><span class="tag t-c">Comprovado</span></td></tr>
+    <tr data-p="P2"><td>C-64</td><td>Scripts e fontes</td><td>shjs.js síncrono com handler de 640–690 ms; script inline da PLP/PDP de 450–560 ms; filtro com INP de até 240 ms no desktop e resposta visual de 0,85–0,88 s no mobile; fonte Palatino de 244 KB; sprite SVG de 148 KB; analytics.js (Universal Analytics) carregado sem nenhuma coleta.</td><td>Perfis de CPU e Event Timing (subagente de performance).</td><td>Interações lentas no mobile e bytes inúteis.</td><td>Adiar scripts da plataforma; subset de fontes; remover analytics.js obsoleto; dividir o sprite.</td><td><span class="tag P2">P2</span></td><td>Médio</td><td>INP p75 por interação.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P3"><td>C-36</td><td>Home › seções</td><td>&quot;Compre o conjunto&quot; com 1 produto; &quot;Melhores combinações&quot; com CTA genérico; abas por material.</td><td>Captura da home.</td><td>Espaço nobre com pouco valor.</td><td>Substituir pela estrutura da seção B.</td><td><span class="tag P3">P3</span></td><td>Baixo</td><td>Cliques por seção.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P3"><td>C-37</td><td>Rodapé</td><td>Copyright 2025; selo Let&#x27;s Encrypt como prova de segurança; endereço da loja ausente; links com contraste de 2,3:1.</td><td>Captura do rodapé.</td><td>Sinais de confiança fracos.</td><td>Rodapé da seção B.</td><td><span class="tag P3">P3</span></td><td>Baixo</td><td>Cliques em políticas e contato.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P3"><td>C-38</td><td>Menu desktop</td><td>Rótulos quebram em 2 linhas e desalinham.</td><td>Captura do cabeçalho.</td><td>Leitura irregular.</td><td>Nomes curtos ou uma linha com espaçamento menor.</td><td><span class="tag P3">P3</span></td><td>Baixo</td><td>–</td><td><span class="tag t-c">Comprovado</span></td></tr>
@@ -8313,7 +8316,758 @@ Base: auditoria de UX já entregue (<code>report/body.html</code>). Este documen
 <li><code>shots/</code>: 61 capturas, incluindo foco com e sem, gaveta da sacola, menu e filtros mobile, reflow, zoom e checkout.</li>
 <li>Scripts: <code>axe-run.js</code>, <code>sum.js</code>, <code>cc.js</code>, <code>struct.js</code>, <code>tabwalk.js</code>, <code>probe_*.js</code>, <code>reflow.js</code>, <code>hscroll*.js</code>.</li>
 </ul></div></details>
-<details class="apx"><summary>Performance e Core Web Vitals <span class="tag t-h">pendente</span></summary><p class="note">Relatório ainda não entregue.</p></details>
+<details class="apx" id="apx-performance"><summary>Performance e Core Web Vitals</summary><div class="apx-body"><h4>Tenmanya: diagnóstico de performance e plano de otimização</h4>
+<p>Medições de 06/11/2026 a 07/11/2026 em www.tenmanya.com.br (Linx Commerce, tema <code>agrada-template-clean</code>).
+Páginas: home, <code>/loucas</code> (PLP) e a PDP da faca santoku Suncraft (<code>...-p317484</code>).</p>
+<h2>0. Método e limites</h2>
+<ul>
+<li><strong>Ferramenta:</strong> Playwright <code>chromium.launch()</code> padrão (Chromium 153), user agent padrão, contexto novo e sem cache em cada execução. Nenhuma proteção anti-bot foi contornada.</li>
+<li><strong>Perfis:</strong></li>
+<li>Mobile: Pixel 7 (412×915, DPR 2,625), 150 ms de latência, 1,6 Mbps de download, 750 kbps de upload e CPU 4× mais lenta (CDP).</li>
+<li>Desktop: 1440×900, sem throttling.</li>
+<li><strong>Execuções:</strong> 3 por página e perfil, para carga com trace, para cobertura e para interações. As tabelas mostram a <strong>mediana</strong>.</li>
+<li><strong>Fontes de dados:</strong></li>
+<li>Trace do DevTools (long tasks, TBT, tempo de script por URL e por domínio).</li>
+<li>Long Animation Frames API (atribuição por script).</li>
+<li>PerformanceObserver: LCP, <code>layout-shift</code> com <code>sources</code> e Event Timing.</li>
+<li>Cobertura de JS (<code>Profiler.startPreciseCoverage</code>, modo detalhado) e de CSS (<code>CSS.startRuleUsageTracking</code>), medida após o <code>load</code> + 8 s, sem interação.</li>
+<li>Cabeçalhos HTTP via CDP.</li>
+<li><strong>PageSpeed/CrUX:</strong> a API foi chamada uma única vez nesta etapa e retornou de novo <strong>HTTP 429</strong>, com <code>quota_limit_value: "0"</code> no projeto padrão (<code>raw/psi_attempt.json</code>). <strong>Não há dado de campo (CrUX).</strong> Tudo neste documento é medição de laboratório.</li>
+<li><strong>Interações:</strong> foram feitas 6 adições de 1 item à sacola (3 no mobile e 3 no desktop), cada uma em sessão anônima nova e descartada. O probe inicial fez mais 2 (1 em cada perfil). Nenhuma conta foi criada e nenhuma compra foi finalizada. O banner de consentimento AdOpt foi removido apenas do DOM local antes das interações, para não interceptar o toque.</li>
+</ul>
+<p><strong>Limitações que afetam a leitura:</strong></p>
+<ol>
+<li>Todo o tráfego passa por um proxy de saída do ambiente, que re-termina o TLS. Por isso o protocolo aparece como <code>http/1.1</code> em todos os recursos, e <strong>não é possível avaliar HTTP/2 ou HTTP/3</strong>. No desktop, a rede também passa pelo proxy e não é throttled: o TTFB inclui esse salto.</li>
+<li>Os observers de instrumentação (LCP e layout shift) adicionaram trabalho na main thread. No mobile da PLP, isso somou 83–428 ms por execução (mediana de 345 ms); nas demais páginas, 0–246 ms. O TBT reportado é <strong>bruto e superestima um pouco</strong>. As conclusões não mudam.</li>
+<li>O "TBT" aqui soma (duração − 50 ms) das long tasks entre o FCP e o fim da janela observada (<code>load</code> + 8 s). Não é o TBT do Lighthouse, que usa a janela FCP→TTI.</li>
+<li>O proxy de INP mede uma interação com a página já ociosa (6 s após o <code>load</code>). É um cenário otimista: com o usuário tocando durante a carga, o atraso de entrada tende a ser maior, pelas long tasks listadas na seção 3.</li>
+</ol>
+<p>Legenda: <strong>[medido]</strong> = observado nos dados; <strong>[hipótese]</strong> = inferência a confirmar.</p>
+<hr />
+<h2>1. Resultados por página (mediana de 3)</h2>
+<table>
+<thead>
+<tr>
+<th>Página</th>
+<th>TTFB</th>
+<th>FCP</th>
+<th>LCP</th>
+<th>CLS</th>
+<th>TBT*</th>
+<th>Long tasks</th>
+<th>Main thread</th>
+<th>Load</th>
+<th>Req.</th>
+<th>Total</th>
+<th>JS</th>
+<th>CSS</th>
+<th>Imagens</th>
+<th>Fontes</th>
+<th>Terceiros</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Home mobile</td>
+<td>144 ms</td>
+<td>2,81 s</td>
+<td>2,81 s</td>
+<td>0,003</td>
+<td>1.474 ms</td>
+<td>14</td>
+<td>7,2 s</td>
+<td>10,7 s</td>
+<td>28</td>
+<td>2.038 KB</td>
+<td>800</td>
+<td>304</td>
+<td>623</td>
+<td>268</td>
+<td>846 KB</td>
+</tr>
+<tr>
+<td>Louças mobile</td>
+<td>147 ms</td>
+<td>2,28 s</td>
+<td><strong>3,42 s</strong></td>
+<td>0,041</td>
+<td><strong>3.008 ms</strong></td>
+<td>22</td>
+<td>8,1 s</td>
+<td>11,1 s</td>
+<td>55</td>
+<td>1.958 KB</td>
+<td>968</td>
+<td>357</td>
+<td>288</td>
+<td>268</td>
+<td>855 KB</td>
+</tr>
+<tr>
+<td>Produto mobile</td>
+<td>222 ms</td>
+<td>2,46 s</td>
+<td>2,51 s</td>
+<td>0,043</td>
+<td><strong>2.669 ms</strong></td>
+<td>23</td>
+<td>7,7 s</td>
+<td>10,8 s</td>
+<td>46</td>
+<td>1.895 KB</td>
+<td>984</td>
+<td>357</td>
+<td>228</td>
+<td>268</td>
+<td>855 KB</td>
+</tr>
+<tr>
+<td>Home desktop</td>
+<td>160 ms</td>
+<td>0,57 s</td>
+<td>0,85 s</td>
+<td><strong>0,299</strong></td>
+<td>228 ms</td>
+<td>5</td>
+<td>1,8 s</td>
+<td>2,7 s</td>
+<td>29</td>
+<td><strong>4.429 KB</strong></td>
+<td>798</td>
+<td>304</td>
+<td><strong>3.018</strong></td>
+<td>268</td>
+<td>844 KB</td>
+</tr>
+<tr>
+<td>Louças desktop</td>
+<td>149 ms</td>
+<td>0,46 s</td>
+<td>1,04 s</td>
+<td>0,049</td>
+<td>527 ms</td>
+<td>8</td>
+<td>2,5 s</td>
+<td>2,9 s</td>
+<td>99</td>
+<td>2.257 KB</td>
+<td>968</td>
+<td>357</td>
+<td>610</td>
+<td>268</td>
+<td>855 KB</td>
+</tr>
+<tr>
+<td>Produto desktop</td>
+<td>211 ms</td>
+<td>0,60 s</td>
+<td>0,60 s</td>
+<td>0,017</td>
+<td>465 ms</td>
+<td>7</td>
+<td>1,8 s</td>
+<td>3,2 s</td>
+<td>49</td>
+<td>1.930 KB</td>
+<td>975</td>
+<td>357</td>
+<td>275</td>
+<td>268</td>
+<td>850 KB</td>
+</tr>
+</tbody>
+</table>
+<p>* TBT bruto, com as ressalvas do item 0. Pesos em KB transferidos antes da rolagem. Valores por execução estão em <code>resumo.json</code> (<code>porExecucao</code>).</p>
+<p><strong>Leitura [medido]:</strong></p>
+<ul>
+<li>No mobile, o LCP fica entre 2,5 e 3,4 s nas três páginas (limite de "bom": 2,5 s). O TBT passa de 1,4 s em todas. A main thread fica ocupada por 7–8 s, e o <code>load</code> chega aos 10–11 s.</li>
+<li>No desktop, o LCP é bom, mas a home tem <strong>CLS 0,299 nas 3 execuções</strong> (limite de "bom": 0,1) e <strong>3 MB de imagens antes da rolagem</strong>.</li>
+<li>O HTML é pequeno: 34–48 KB comprimidos e TTFB de 130–300 ms. O gargalo não está no servidor, e sim no que vem depois do HTML.</li>
+</ul>
+<hr />
+<h2>2. Causas raiz</h2>
+<h3>C1. CSS principal render-blocking de 1,2 MB, com ~92% não usado e cache invalidado a cada página [medido]</h3>
+<ul>
+<li><strong>Arquivo:</strong> <code>estilos.css</code>, em <code>&lt;link&gt;</code> no <code>&lt;head&gt;</code>, com <code>rel=preload</code> também. São 113 KB transferidos (gzip) e <strong>1.225 KB decodificados</strong>. A cobertura mostra <strong>83–104 KB usados (91–93% não usados)</strong> em todas as páginas.</li>
+<li><strong>Efeito no mobile:</strong> o download de <code>estilos.css</code> termina entre 1,87 e 2,41 s. O FCP vem 0,3–0,5 s depois, tempo da recalculação de estilo sob CPU 4×; o estilo soma 1,0–1,5 s de main thread no total da carga.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Página (mobile)</th>
+<th><code>estilos.css</code> termina em</th>
+<th>FCP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Home</td>
+<td>2,32–2,41 s</td>
+<td>2,79–2,81 s</td>
+</tr>
+<tr>
+<td>PDP</td>
+<td>2,08–2,11 s</td>
+<td>2,39–2,48 s</td>
+</tr>
+<tr>
+<td>PLP</td>
+<td>1,87–2,08 s</td>
+<td>2,24–2,38 s</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Por que demora:</strong> 113 KB a 1,6 Mbps levariam cerca de 0,6 s. O resto é disputa de banda: a tag AdOpt (266 KB) começa no mesmo instante (~300 ms) e termina entre 3,6 e 6,6 s (ver C3).</li>
+<li><strong>O LCP de mobile na home e na PDP é limitado pelo CSS, não pela imagem.</strong> A imagem do LCP chega em ~1,0 s (home) e ~0,75 s (PDP), mas o atraso de renderização é de 1,3–1,9 s.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Subpartes do LCP (mobile, mediana aprox.)</th>
+<th>TTFB</th>
+<th>Atraso de descoberta</th>
+<th>Download</th>
+<th>Atraso de render</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Home (banner 26 KB)</td>
+<td>144</td>
+<td>~150</td>
+<td>~740</td>
+<td><strong>~1.770</strong></td>
+</tr>
+<tr>
+<td>PDP (foto 6 KB)</td>
+<td>222</td>
+<td>~134</td>
+<td>~307</td>
+<td><strong>~1.850</strong></td>
+</tr>
+<tr>
+<td>PLP (foto 8 KB)</td>
+<td>147</td>
+<td><strong>~2.150</strong></td>
+<td>~900</td>
+<td>~231</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Conteúdo do arquivo:</strong> o mesmo <code>estilos.css</code> traz <code>@font-face</code> de Font Awesome 5 com <code>src</code> em <code>.eot</code>, duplicado com caminho <code>https://www.tenmanya.com.br//Custom/Content/Themes/agrada-template/...</code> (tema antigo). A PLP e a PDP carregam ainda <code>scs.css</code> (295 KB decodificados, <strong>99% não usados</strong>), no <code>&lt;body&gt;</code>.</li>
+<li><strong>Cache que não funciona entre páginas:</strong> o parâmetro de versão de <code>estilos.css</code> <strong>muda de página para página e de hora em hora</strong>. Exemplos: <code>?v=2026-11-07T04:01:58</code> na home, <code>?v=2026-11-07T02:33:28</code> em <code>/loucas</code> e <code>?v=2026-11-07T06:14:56</code> na PDP.</li>
+<li>Num teste de navegação no mesmo navegador (home → louças → produto), o CSS de 113 KB foi <strong>baixado de novo em 2 de 2 trocas de página, nas 2 execuções</strong> (<code>raw/warm_cache.json</code>).</li>
+<li>Na mesma sequência, os JS do tema com <code>?v=1</code> vieram do cache.</li>
+<li>[hipótese] O valor é o momento em que o HTML foi gerado e guardado no CDN (<code>Cache-Control: public, max-age=1200, s-maxage=21600</code> no HTML). Ou seja, é um timestamp de renderização, não um hash do arquivo.</li>
+</ul>
+<h3>C2. Banner principal da home: salto de layout ao iniciar o Swiper e imagem de 1,5 MB no desktop [medido]</h3>
+<p><strong>CLS 0,299:</strong></p>
+<ul>
+<li>Em todas as execuções com CLS alto, quase todo o valor vem de <strong>um único shift</strong> de 0,29 por volta de 640 ms.</li>
+<li>As fontes do shift são <code>section.navegue</code> (y 193→705), <code>section.condicoes</code> (y 126→638) e os três banners de <code>section.navegue</code> (<code>#banner-130/131/132</code>), que somem de y≈680.</li>
+<li><strong>Mecanismo</strong>, isolado com <code>raw/banner_cls_timeline.json</code>, atrasando localmente a imagem do banner:
+  1. Antes de o Swiper ser inicializado (<code>swiper-initialized</code>, ~30 ms após o DOMContentLoaded), o slide renderiza com 135 px de altura.
+  2. Depois da inicialização, passa a 542 → 638 px.
+  3. A seção seguinte desce ~500 px, num shift de 0,56 + 0,025.</li>
+<li>Isso só acontece quando a primeira pintura ocorre <strong>antes</strong> da inicialização do Swiper. É uma corrida, por isso varia com o viewport:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Viewport</th>
+<th>Execuções com CLS &gt; 0,28</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1920×1080</td>
+<td>3/3 (0,32)</td>
+</tr>
+<tr>
+<td>1440×900</td>
+<td>4/6 (3/3 no lote principal e 1/3 no <code>cls.js</code>)</td>
+</tr>
+<tr>
+<td>1280×800</td>
+<td>1/3</td>
+</tr>
+<tr>
+<td>1366×768</td>
+<td>0/3</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>A <code>&lt;img&gt;</code> tem <code>width=1920 height=850</code> e reserva a proporção corretamente (<code>aspect-ratio: auto 1920/850</code>). <strong>O problema está no layout pré-JS do carrossel</strong>, não na falta de dimensões da imagem.</li>
+</ul>
+<p><strong>Peso:</strong></p>
+<ul>
+<li>O mesmo banner (<code>163_banner...webp</code>) tem <strong>1.519 KB</strong> em 1920×850, exibido a 1440×638. São ~7,6 bits por pixel, compatível com WebP perto do sem perdas.</li>
+<li>Tem <code>fetchpriority=high</code>, <code>rel=preload</code> e <code>loading=eager</code>, o que está correto: ele é o LCP no desktop.</li>
+<li>Outros banners da home desktop: 385, 375 e 251 KB (carregados a ~880 ms) e 311, 304, 299, 280, 229 e 226 KB. O banner 127 tem 2272×1856 e é exibido a 400×327, 5,7× maior que o necessário.</li>
+<li><strong>Nenhuma imagem do site usa <code>srcset</code> ou <code>&lt;picture&gt;</code>.</strong></li>
+<li>No mobile, o banner principal é um arquivo à parte, de 430×637 e 26 KB, exibido a 412 px com DPR 2,625. Seriam necessários ~1.080 px: fica <strong>abaixo</strong> da resolução, um problema de nitidez e não de peso. O banner 137 tem 308 KB para 430×520; [hipótese] WebP animado ou qualidade máxima.</li>
+</ul>
+<h3>C3. Tag de consentimento AdOpt: o maior custo de terceiros, carregado antes de tudo [medido]</h3>
+<ul>
+<li><strong>Carregamento:</strong> <code>tag.goadopt.io/injector.js</code> é <code>async</code> no <code>&lt;head&gt;</code>, com <code>preconnect</code>. São 266 KB transferidos (brotli) e <strong>774 KB decodificados</strong>, com <strong>100% do código executado</strong> (0% não usado).</li>
+<li><strong>Main thread:</strong> 742–764 ms de script no mobile e 227–240 ms no desktop.</li>
+<li><strong>Uma única long task de 690–860 ms no mobile</strong>, com 300–500 ms de garbage collection dentro. Isso dá ~600–800 ms de bloqueio por carga, o maior item isolado do TBT na home.</li>
+<li><strong>Banda:</strong> disputa a banda com o CSS crítico no mobile e termina entre 3,6 e 6,6 s (ver C1).</li>
+<li><strong>Cache:</strong> <code>Cache-Control: max-age=3600</code>, ou seja, rebaixado a cada hora.</li>
+<li><strong>CLS de baixa intensidade:</strong> o banner do AdOpt anima a altura (58→241 px) e gera dezenas de micro-shifts (~0,005 cada; 0,037 no total no mobile sem throttling).</li>
+</ul>
+<h3>C4. Widget de chat Bitrix24 completo carregado em toda página [medido]</h3>
+<ul>
+<li><strong>Arquivos:</strong></li>
+<li><code>tenmanya.bitrix24.com.br/.../imopenlines/widget/script.min.js</code>: 307 KB transferidos, 1.006 KB decodificados, <strong>71% não usado</strong>.</li>
+<li><code>styles.min.css</code>: 191 KB transferidos, 602 KB decodificados, <strong>96% não usado</strong>.</li>
+<li>Somando o loader (49 KB) e o <code>call.tracker.js</code> (11 KB): <strong>~560 KB por página</strong>, mais que todo o JS próprio do tema.</li>
+<li><strong>Main thread:</strong> 386–431 ms de script no mobile, com long tasks de 270–330 ms por volta de 10 s. O widget carrega a ~5 s, depois do conteúdo principal; por isso pesa no TBT e no INP de quem interage nesse intervalo, e pouco no LCP.</li>
+<li>[hipótese] O botão de chat só precisa existir visualmente até o primeiro clique.</li>
+</ul>
+<h3>C5. Scripts da plataforma Linx e inline monopolizam a main thread na PLP e na PDP [medido]</h3>
+<ul>
+<li><strong><code>assets/shjs.js</code>:</strong> síncrono no <code>&lt;body&gt;</code> (parser-blocking).</li>
+<li>Tem um handler de <code>DOMContentLoaded</code> de <strong>636–690 ms no mobile</strong>, com 298–319 ms de layout forçado.</li>
+<li>Soma 2,0–2,5 s de bloqueio nas 3 execuções de cada página mobile.</li>
+<li>Também processa a resposta do filtro (ver C7).</li>
+<li><strong>Script inline no HTML</strong> da PLP e da PDP: uma tarefa de <strong>450–560 ms no mobile</strong> (a PDP tem 91 KB de JS inline, e a PLP 27 KB).</li>
+<li><strong><code>assets/sjs.js</code>:</strong> 116 KB transferidos, 397 KB decodificados, <strong>81% não usado</strong>.</li>
+<li><strong><code>no.critical.async.compressed.js</code>:</strong> 72–91% não usado. <strong><code>critical.compressed.js</code>:</strong> 63–78% não usado.</li>
+<li><strong>DOMContentLoaded no mobile:</strong> 7,2–8,7 s na PLP e na PDP, contra ~3,0 s na home.</li>
+<li><strong>Clarity:</strong> custa 210–233 ms de main thread no mobile da PLP e da PDP. Na home, ele carrega muito tarde (12–21 s). Versões diferentes (0.8.73-beta e 0.8.75) apareceram em execuções diferentes; <strong>não há carregamento duplicado</strong> na mesma página.</li>
+</ul>
+<h3>C6. Imagem de LCP com <code>loading="lazy"</code> na PLP e na PDP [medido]</h3>
+<ul>
+<li><strong>PLP:</strong> o LCP no mobile (3,26–3,64 s) é a primeira foto da vitrine (<code>img.main-image</code>), com <strong><code>loading="lazy"</code> e prioridade Low</strong>. Ela só é pedida ~2,15–2,30 s após o TTFB, porque o navegador espera o layout (logo, o CSS da C1) para decidir carregá-la. O HTML tem 70 <code>&lt;img&gt;</code>, 69 delas com <code>loading=lazy</code>, incluindo as 7 visíveis na primeira dobra no mobile e 14 no desktop.</li>
+<li><strong>PDP:</strong> a foto principal também tem <code>loading="lazy"</code>, sem <code>fetchpriority</code> (prioridade Medium). Aqui o efeito é menor, porque o atraso dominante é o CSS (C1).</li>
+<li><strong>Home mobile:</strong> três banners da primeira tela (149, 122 e 114) estão com <code>lazy</code>.</li>
+</ul>
+<h3>C7. Interações: aplicar filtro e adicionar à sacola demoram para dar resposta visual [medido]</h3>
+<p>Event Timing API, 3 execuções. A "Duração" é o valor que entra no INP. A "Atualização visual" é o tempo do toque até a lista ou o contador mudarem na tela.</p>
+<table>
+<thead>
+<tr>
+<th>Interação</th>
+<th>Perfil</th>
+<th>Duração (mediana)</th>
+<th>Atraso entrada / processamento / apresentação</th>
+<th>Atualização visual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Abrir menu (hambúrguer)</td>
+<td>mobile</td>
+<td>120 ms</td>
+<td>21 / 4 / 95</td>
+<td>568 ms</td>
+</tr>
+<tr>
+<td>Abrir painel de filtros</td>
+<td>mobile</td>
+<td>120 ms</td>
+<td>62 / 38 / 17</td>
+<td>423 ms</td>
+</tr>
+<tr>
+<td>Abrir grupo de filtro (Marca)</td>
+<td>mobile</td>
+<td>56 ms</td>
+<td>7 / 3 / 45</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Aplicar filtro (1ª marca)</td>
+<td>mobile</td>
+<td>112 ms</td>
+<td>11 / 5 / 58</td>
+<td><strong>853 ms</strong> (812–1.079)</td>
+</tr>
+<tr>
+<td>Adicionar à sacola (Comprar)</td>
+<td>mobile</td>
+<td>104 ms</td>
+<td>49 / 17 / 22</td>
+<td><strong>884 ms</strong> (838–1.103)</td>
+</tr>
+<tr>
+<td>Hover no menu "Utensílios"</td>
+<td>desktop</td>
+<td>&lt; 16 ms (hover não conta para INP)</td>
+<td>n/a</td>
+<td>123 ms</td>
+</tr>
+<tr>
+<td>Clicar na busca / digitar</td>
+<td>desktop</td>
+<td>32 / 16 ms</td>
+<td>n/a</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Abrir grupo de filtro</td>
+<td>desktop</td>
+<td>24 ms</td>
+<td>3 / 1 / 20</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Aplicar filtro (1ª marca)</td>
+<td>desktop</td>
+<td><strong>240 ms</strong> (200–240)</td>
+<td>2 / 1 / <strong>236</strong></td>
+<td>448 ms</td>
+</tr>
+<tr>
+<td>Adicionar à sacola</td>
+<td>desktop</td>
+<td>16 ms</td>
+<td>2 / 1 / 13</td>
+<td>606 ms</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Aplicar filtro no desktop:</strong> fica acima de 200 ms, faixa "precisa melhorar" do INP. Os handlers de clique levam 1–5 ms; o tempo está na apresentação.</li>
+<li>O LoAF mostra o callback <code>XMLHttpRequest.onreadystatechange</code> de <code>shjs.js</code> com 49–166 ms e 12–54 ms de layout forçado, ao renderizar <code>loucas.partial?output=products</code> e <code>output=facets</code>.</li>
+<li>[hipótese] Com rede rápida, a resposta chega antes do próximo quadro, e a renderização da nova lista entra na duração da interação. Em celulares reais com rede boa, esse custo deve ser maior que os 112 ms medidos com CPU 4× e rede de 1,6 Mbps.</li>
+<li><strong>Adicionar à sacola:</strong> a resposta visual depende de três chamadas em série (<code>carrinho/adicionar-produto</code>, <code>resumo-carrinho.partial</code> e <code>widget/browsing_context_data</code>). Leva 0,6–1,1 s até o contador mudar.</li>
+<li><strong>Abrir filtros no mobile:</strong> o atraso de entrada de 62 ms mostra a main thread ainda ocupada 6 s após o <code>load</code> (Clarity e Bitrix).</li>
+<li><strong>Abrir menu no mobile:</strong> a atualização visual de ~570 ms vem de uma transição CSS. O LoAF mostra só 20 ms de script.</li>
+</ul>
+<h3>C8. Fontes, sprite e cabeçalhos [medido]</h3>
+<ul>
+<li><strong>Fontes:</strong></li>
+<li>Carregadas: <code>pala-medium.woff2</code> com <strong>244 KB</strong> (um único arquivo, sem <code>unicode-range</code>) e <code>carla-sans.woff2</code> com 24 KB, ambas com <code>font-display: swap</code>.</li>
+<li>No mobile, a Palatino termina entre 7,2 e 8,5 s. [hipótese] O texto troca de fonte depois de o usuário já estar lendo, e alguns micro-shifts no menu podem vir disso (os shifts de ~0,0001 no menu desktop coincidem com a chegada da fonte).</li>
+<li>O <code>@font-face</code> da Carla declara <code>format("truetype")</code> para um <code>.woff2</code>.</li>
+<li>Os <code>@font-face</code> de Font Awesome não têm <code>font-display</code> e apontam para <code>.eot</code>.</li>
+<li>Não há <code>preload</code> de fonte.</li>
+<li><strong><code>sprite-packed.svg</code>:</strong> 148 KB transferidos (~312 KB decodificados) em todas as páginas, para ícones.</li>
+<li><strong>Selos <code>let-s-encrypt-certificate.png</code> e <code>agrada_digital.png</code>:</strong> 1335×393 exibido a 50×15 (21 KB) e 626×97 exibido a 118×18 (11 KB).</li>
+</ul>
+<p><strong>Cache e compressão:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Recurso</th>
+<th><code>Cache-Control</code></th>
+<th>Compressão</th>
+<th>Observação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTML</td>
+<td><code>public, max-age=1200, s-maxage=21600</code></td>
+<td>gzip</td>
+<td>Cache de CDN de 6 h. Origem provável do <code>?v=</code> variável (C1)</td>
+</tr>
+<tr>
+<td>CSS e JS do tema (<code>dx0xtglpw77ly.cloudfront.net</code>)</td>
+<td><code>public,max-age=604800;s-maxage=3600</code></td>
+<td>gzip</td>
+<td>Sem brotli. Usa <code>;</code> em vez de <code>,</code> entre as diretivas [hipótese: o navegador pode ignorar <code>s-maxage</code>; <code>max-age</code> foi respeitado]</td>
+</tr>
+<tr>
+<td>Fontes e sprite</td>
+<td>idem</td>
+<td>woff2 / gzip</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>Banners (<code>d5uy2yhjdp1qa.cloudfront.net/.../Banners</code>)</td>
+<td><code>public, max-age=604800</code></td>
+<td>—</td>
+<td>OK</td>
+</tr>
+<tr>
+<td><strong>Fotos de produto</strong> (mesmo host, <code>/Products</code>)</td>
+<td><strong>ausente</strong></td>
+<td>—</td>
+<td>109 respostas sem <code>Cache-Control</code> (só cache heurístico) e <strong><code>Content-Type: application/octet-stream</code></strong> em WebP</td>
+</tr>
+<tr>
+<td>AdOpt</td>
+<td><code>max-age=3600</code></td>
+<td>br</td>
+<td>Terceiro</td>
+</tr>
+<tr>
+<td>Bitrix24 widget</td>
+<td><code>max-age=2592000</code></td>
+<td>gzip</td>
+<td>Terceiro</td>
+</tr>
+<tr>
+<td>XHR de carrinho e contexto</td>
+<td><code>private, no-store</code></td>
+<td>gzip</td>
+<td>Correto</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. Long tasks e terceiros por domínio</h2>
+<p>Tempo de script na main thread por domínio (mediana, ms). O tempo de estilo, layout e pintura não está incluído.</p>
+<table>
+<thead>
+<tr>
+<th>Domínio</th>
+<th>Home mob</th>
+<th>PLP mob</th>
+<th>PDP mob</th>
+<th>Home desk</th>
+<th>PLP desk</th>
+<th>PDP desk</th>
+<th>KB transferidos (mob)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dx0xtglpw77ly.cloudfront.net (tema + plataforma)</td>
+<td>768</td>
+<td>932</td>
+<td>1.138</td>
+<td>210</td>
+<td>298</td>
+<td>199</td>
+<td>674–907</td>
+</tr>
+<tr>
+<td>tag.goadopt.io (AdOpt)</td>
+<td>764</td>
+<td>742</td>
+<td>759</td>
+<td>237</td>
+<td>240</td>
+<td>227</td>
+<td>266</td>
+</tr>
+<tr>
+<td>www.tenmanya.com.br (JS inline)</td>
+<td>13</td>
+<td>469</td>
+<td>459</td>
+<td>3</td>
+<td>226</td>
+<td>234</td>
+<td>44–58 (HTML)</td>
+</tr>
+<tr>
+<td>tenmanya.bitrix24.com.br (chat)</td>
+<td>431</td>
+<td>412</td>
+<td>386</td>
+<td>108</td>
+<td>115</td>
+<td>112</td>
+<td>498</td>
+</tr>
+<tr>
+<td>scripts.clarity.ms</td>
+<td>(tardio)</td>
+<td>210</td>
+<td>233</td>
+<td>—</td>
+<td>64</td>
+<td>0</td>
+<td>25</td>
+</tr>
+<tr>
+<td>cdn.bitrix24.com.br</td>
+<td>73</td>
+<td>84</td>
+<td>93</td>
+<td>16</td>
+<td>27</td>
+<td>20</td>
+<td>60</td>
+</tr>
+<tr>
+<td>www.google-analytics.com</td>
+<td>7</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>21</td>
+</tr>
+</tbody>
+</table>
+<p>As principais fontes de long task no mobile (soma das 3 execuções) são:</p>
+<ul>
+<li><strong>Home:</strong> AdOpt com 2.341 ms acima de 50 ms; Bitrix com 814; <code>no.critical.async</code> com 536; estilo e layout com 693.</li>
+<li><strong>PLP:</strong> <code>shjs.js</code> com 2.053; AdOpt com 2.072; estilo e layout com 1.990; script inline com 1.331; Bitrix com 807; Clarity com 835.</li>
+<li><strong>PDP:</strong> <code>shjs.js</code> com 2.546; AdOpt com 2.373; estilo e layout com 1.278; script inline com 1.186; Bitrix com 834.</li>
+</ul>
+<p><strong>Google Analytics:</strong> só o <code>analytics.js</code> (Universal Analytics, descontinuado pelo Google em julho de 2024) foi baixado e executado. Nenhum hit de coleta para domínios do Google apareceu nestas execuções. [hipótese] É uma tag morta.</p>
+<hr />
+<h2>4. Recursos bloqueantes, ordem de carga e dicas de recurso</h2>
+<ul>
+<li><strong>No <code>&lt;head&gt;</code>:</strong></li>
+<li><code>preload</code> da imagem do banner com <code>fetchpriority=high</code> (só na home).</li>
+<li><code>preload</code> de <code>estilos.css</code>, seguido do próprio <code>&lt;link rel=stylesheet&gt;</code>. É o único CSS bloqueante no head.</li>
+<li>AdOpt <code>async</code>.</li>
+<li><code>preconnect</code> para <code>tag.goadopt.io</code> e, na PLP e na PDP, para <code>www.clarity.ms</code>.</li>
+<li><strong>Não há:</strong> <code>preconnect</code> para os dois hosts do CloudFront (<code>dx0xtglpw77ly</code> para tema e fontes, <code>d5uy2yhjdp1qa</code> para imagens) nem <code>preload</code> de fonte.</li>
+<li><strong>No <code>&lt;body&gt;</code>:</strong></li>
+<li>PLP e PDP: <code>shjs.js</code> síncrono (parser-blocking).</li>
+<li>PDP: também <code>pinch-zoom.umd.js</code> síncrono (7,6 KB, 74% não usado).</li>
+<li>PLP e PDP: <code>scs.css</code> como stylesheet no body. Na PLP, a ordem de carga mostra o pedido de <code>shjs.js</code> a ~450 ms e a pintura da lista só depois do CSS.</li>
+<li><strong>Ordem típica no mobile:</strong>
+  1. HTML (0–440 ms).
+  2. Banner, AdOpt e <code>estilos.css</code> em paralelo (~300 ms).
+  3. JS do tema (~420 ms).
+  4. Sprite SVG e fontes (~2,6 s, só depois do CSS, porque são descobertos no CSS).
+  5. Bitrix loader, GA e chamadas XHR de contexto e carrinho (~3 s).
+  6. Widget Bitrix (~5 s).</li>
+</ul>
+<p>A ordem completa por execução está em <code>resumo.json</code> (<code>ordemCarga</code>).</p>
+<hr />
+<h2>5. Plano de otimização priorizado</h2>
+<p>"Ganho esperado" só traz número quando ele decorre diretamente de uma medição deste trabalho. Nos demais casos, aparece "a medir".</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Ação</th>
+<th>Métrica e ganho esperado</th>
+<th>Esforço</th>
+<th>Quem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Corrigir o layout do carrossel antes do JS</strong>: CSS que dê ao contêiner do banner principal a altura final antes da inicialização do Swiper (ex.: <code>aspect-ratio: 1920/850</code> no <code>.fullbanner .swiper</code>, primeiro slide com <code>width:100%</code> e demais slides ocultos até <code>.swiper-initialized</code>)</td>
+<td>CLS home desktop: elimina o shift de ~0,29 medido (0,299 → ~0,01, o resíduo medido sem o shift)</td>
+<td>Baixo</td>
+<td>Tema (agência)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Recomprimir e servir o banner principal em tamanhos responsivos</strong>: <code>srcset</code>/<code>sizes</code> com 1440, 1920 e ~1080 px para mobile, qualidade ~75–80, AVIF/WebP. Aplicar o mesmo aos banners de 225–385 KB</td>
+<td>Peso: até −1,3 MB só no LCP da home desktop (1.519 KB hoje). LCP desktop: a medir (o download do LCP leva 440–490 ms). Melhora a nitidez no mobile (hoje 430 px para 1.080 px necessários)</td>
+<td>Baixo (conteúdo) / médio (template com <code>srcset</code>)</td>
+<td>Marketing + tema</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Versionar <code>estilos.css</code> pelo conteúdo (hash ou data do arquivo), não pelo horário de geração do HTML</strong></td>
+<td>Navegação entre páginas: −113 KB transferidos e −1,2 MB de CSS reprocessado por página, para quem já visitou outra página (medido: re-download em 100% das trocas)</td>
+<td>Baixo</td>
+<td>Tema/agência; Linx se o parâmetro vier da plataforma</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Enxugar o CSS crítico</strong>: remover regras não usadas (91–93%), Font Awesome legado (<code>.eot</code> duplicado) e CSS de componentes de outras páginas; inlinar o CSS acima da dobra e carregar o restante sem bloquear</td>
+<td>FCP/LCP mobile: hoje o FCP vem 0,3–0,5 s após o fim do CSS, e o CSS leva 1,6–2,1 s para chegar. Ganho a medir</td>
+<td>Médio/alto</td>
+<td>Tema (agência)</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Adiar o widget Bitrix24</strong> (fachada: botão estático; carregar <code>loader</code>/<code>widget</code> no primeiro clique ou após <code>requestIdleCallback</code> longo)</td>
+<td>−~560 KB por página (medido) e −386–431 ms de script no mobile (medido)</td>
+<td>Baixo/médio</td>
+<td>Tema + configuração do Bitrix</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Rever a carga do AdOpt</strong>: pedir ao fornecedor uma build menor ou sem GC pesado, aumentar o <code>max-age</code>, avaliar o carregamento após a primeira pintura (mantendo o bloqueio das tags até o consentimento) ou trocar de CMP</td>
+<td>Long task de 690–860 ms (mobile) e ~760 ms de script por página; libera banda para o CSS. Ganho exato a medir com o fornecedor</td>
+<td>Médio</td>
+<td>Fornecedor AdOpt / DPO (a decisão de consentimento tem implicação LGPD)</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Tirar <code>loading="lazy"</code> das imagens da primeira dobra</strong> (4 primeiros produtos da PLP; foto principal da PDP; banners visíveis da home mobile) e pôr <code>fetchpriority="high"</code> na primeira</td>
+<td>PLP mobile: elimina o atraso de descoberta de ~2,15–2,30 s da imagem de LCP. LCP: a medir (limitado em seguida pelo CSS, ação 4)</td>
+<td>Baixo</td>
+<td>Tema</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Otimizar a renderização do filtro e do carrinho</strong> (<code>shjs.js</code>): evitar layout forçado no callback XHR, renderizar em lote, mostrar estado de carregamento imediato; no carrinho, paralelizar ou eliminar chamadas em série</td>
+<td>INP de "aplicar filtro" no desktop: 240 ms (mediana) hoje. Atualização visual de 0,85–0,88 s no mobile. Ganho a medir</td>
+<td>Médio/alto</td>
+<td>Linx (código da plataforma)</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Reduzir o JS da plataforma e do tema na PLP e na PDP</strong>: <code>shjs.js</code> síncrono → <code>defer</code>; dividir o handler de <code>DOMContentLoaded</code> de 640–690 ms; revisar os 91 KB de JS inline da PDP; <code>sjs.js</code> (81% não usado)</td>
+<td>TBT mobile PLP/PDP (2,7–3,0 s brutos): a medir</td>
+<td>Alto</td>
+<td>Linx/agência</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>Subconjunto da fonte Palatino</strong> (latin + latin-ext com <code>unicode-range</code>) e <code>preload</code> só das fontes usadas acima da dobra; corrigir <code>format("woff2")</code> da Carla; remover Font Awesome não usado</td>
+<td>−até ~200 KB de fonte [hipótese: o tamanho depende dos glifos mantidos]; menos troca tardia de texto. A medir</td>
+<td>Baixo</td>
+<td>Tema</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>Cabeçalhos das fotos de produto</strong>: <code>Cache-Control: public, max-age=31536000, immutable</code> e <code>Content-Type: image/webp</code>; brotli nos CSS/JS do CloudFront; corrigir o separador <code>;</code> → <code>,</code> no <code>Cache-Control</code></td>
+<td>Visitas de retorno: a medir</td>
+<td>Baixo</td>
+<td>Linx (configuração de CDN/bucket)</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>Remover <code>analytics.js</code> (Universal Analytics)</strong> se não houver uso; carregar o Clarity só depois do consentimento e em idle</td>
+<td>−21 KB; −210–233 ms de script do Clarity no mobile da PLP/PDP, quando adiado (medido)</td>
+<td>Baixo</td>
+<td>Agência + DPO</td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>Sprite SVG de 148 KB e selos PNG superdimensionados</strong>: dividir o sprite por página ou inlinar só os ícones usados; redimensionar os selos</td>
+<td>−~150 KB por página (a medir após a divisão)</td>
+<td>Baixo</td>
+<td>Tema</td>
+</tr>
+<tr>
+<td>14</td>
+<td><code>preconnect</code> para <code>dx0xtglpw77ly.cloudfront.net</code> e <code>d5uy2yhjdp1qa.cloudfront.net</code></td>
+<td>Pequeno; a medir</td>
+<td>Baixo</td>
+<td>Tema</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ordem sugerida:</strong></p>
+<ul>
+<li>Quick wins: 1, 2, 3, 5, 7, 11 e 12.</li>
+<li>Em seguida: 4, 6, 10 e 13.</li>
+<li>Com a Linx: 8 e 9.</li>
+</ul>
+<p>Depois de cada entrega, recomenda-se repetir <code>scripts/batch.sh</code> e coletar dados de campo: RUM com <code>web-vitals</code> ou CrUX quando houver cota da API.</p>
+<hr />
+<h2>6. Arquivos</h2>
+<ul>
+<li><code>relatorio.md</code>: este documento.</li>
+<li><code>resumo.json</code>: agregados e medianas por página e perfil (gerado por <code>scripts/aggregate.js</code>).</li>
+<li><code>raw/</code>: JSON bruto de cada execução.</li>
+<li><code>timing_&lt;perfil&gt;_&lt;página&gt;_&lt;n&gt;.json</code>: trace, LCP, layout shifts, LoAF, requisições com cabeçalhos e auditoria de imagens.</li>
+<li><code>coverage_*</code>: cobertura de JS e CSS e <code>@font-face</code>.</li>
+<li><code>inp_*</code>: Event Timing e LoAF por interação.</li>
+<li><code>cls_home_desktop.json</code>: CLS em 4 viewports, 3 execuções cada.</li>
+<li><code>banner_cls_timeline.json</code> e <code>banner_espaco_reservado.json</code>: mecanismo do CLS.</li>
+<li><code>warm_cache.json</code>: navegação com cache.</li>
+<li><code>cls_rolagem_mobile_home.json</code>.</li>
+<li><code>psi_attempt.json</code>: resposta 429 do PageSpeed.</li>
+<li><code>batch.log</code>.</li>
+<li><code>scripts/</code>: <code>measure.js</code>, <code>inp.js</code>, <code>aggregate.js</code>, <code>cls.js</code>, <code>banner.js</code>, <code>banner2.js</code>, <code>warm.js</code>, <code>scrollcls.js</code>, <code>probe.js</code>, <code>probe2.js</code> e <code>batch.sh</code>.</li>
+</ul>
+<p><strong>Observação sobre o CLS após a rolagem no mobile:</strong> com throttling, o CLS acumulado depois de uma rolagem programática chegou a 0,22 (mediana). Sem throttling, foi 0,037, vindo da animação do banner AdOpt (<code>raw/cls_rolagem_mobile_home.json</code>). A origem do valor sob throttling não foi atribuída e fica como item a investigar. A rolagem programática não equivale à rolagem de um usuário real.</p></div></details>
 <details class="apx" id="apx-seo"><summary>SEO técnico</summary><div class="apx-body"><h4>Auditoria de SEO técnico: www.tenmanya.com.br (Linx Commerce)</h4>
 <p>Coleta em 06/11/2026 com Playwright (Chromium padrão, user agent padrão, sem contornar proteção), requisições sequenciais com pausa de 1 s. Somente leitura; nenhum login foi tentado.</p>
 <p>Classificação de cada achado:
