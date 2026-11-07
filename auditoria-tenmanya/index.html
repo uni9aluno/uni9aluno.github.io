@@ -642,7 +642,7 @@ details.apx[open]>summary::before{content:"−"}
 <div class="scroll-x"><table>
   <thead><tr><th>Item</th><th>Constatação</th><th>Recomendação</th></tr></thead>
   <tbody>
-    <tr><td>Sitemap</td><td>O índice lista ambientes de homologação e antigos em tenmanya.core.dcg.com.br (/hlg, /old, /agrada-template-clean, /mobile)</td><td>Remover do índice; proteger os ambientes com autenticação e <code>noindex</code></td></tr>
+    <tr><td>Sitemap</td><td>O arquivo /sitemap.xml (segundo índice, diferente do /sitemap/index declarado no robots.txt) lista ambientes de homologação e antigos em tenmanya.core.dcg.com.br (/hlg, /old, /agrada-template-clean, /mobile)</td><td>Remover do índice; proteger os ambientes com autenticação e <code>noindex</code></td></tr>
     <tr><td>Canonical</td><td>Aponta para http:// em todas as páginas, embora o site redirecione para https</td><td>Canonical absoluto em https; sitemap em https</td></tr>
     <tr><td>Headings</td><td>Home sem H1; H1 de categoria é o bloco de texto no fim da página</td><td>H1 visível no topo ("Louças japonesas"); texto de apoio curto no topo e longo no fim como H2</td></tr>
     <tr><td>Listas</td><td>/listas/* rastreáveis (Allow: /listas/) com &lt;title&gt; vazio</td><td>Title e descrição próprios ou <code>noindex</code></td></tr>
@@ -689,7 +689,7 @@ details.apx[open]>summary::before{content:"−"}
   <tbody>
     <tr data-p="P0"><td>C-01</td><td>Menu › Ofertas</td><td>Primeiro item do menu desktop abre página com &quot;Nenhum produto encontrado&quot;.</td><td>/ofertas em 06/11/2026, desktop e mobile.</td><td>Beco sem saída para o cliente com maior intenção de compra; perda de confiança.</td><td>Apontar para lista dinâmica de produtos com preço promocional ativo, ordenada por desconto; regra que oculta o item quando vazio.</td><td><span class="tag P0">P0</span></td><td>Baixo</td><td>Taxa de saída em /ofertas; cliques em produto a partir de Ofertas.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P0"><td>C-02</td><td>PLP › filtro Tipo</td><td>Filtro cobre 12 de 674 produtos em Louças (1,8%) e cerca de 20 dos ~1.630 do catálogo (1,1% a 1,2%); &quot;Pratos&quot; retorna 3 e &quot;Tigelas Pequenas&quot; retorna 3 (cerca de 194 produtos começam com &quot;Tigela&quot;).</td><td>Aplicação de cada opção; varredura das 19 páginas de Louças.</td><td>Cliente conclui que o produto não existe; distorce a descoberta.</td><td>Ocultar o grupo imediatamente onde a cobertura for menor que 80%; reabrir após enriquecimento (C-11).</td><td><span class="tag P0">P0</span></td><td>Baixo</td><td>Uso de filtro seguido de clique em produto; buscas após filtrar.</td><td><span class="tag t-c">Comprovado</span></td></tr>
-    <tr data-p="P0"><td>C-16</td><td>Ambientes de homologação</td><td>Sitemap lista 4 ambientes em tenmanya.core.dcg.com.br (/hlg, /old, /agrada-template-clean, /mobile); todos respondem 200 sem autenticação e são indexáveis. /mobile não tem banner de cookies, dispara Google Ads, GA4 e Meta com IDs de produção e expõe formulário de login.</td><td>/sitemap.xml e carga da página inicial de cada ambiente em 06/11/2026 (subagente de conformidade); login não testado.</td><td>Superfície de ataque exposta, contaminação de métricas e de públicos de anúncio de produção, conteúdo duplicado indexável. Se usarem base real de clientes, pode exigir avaliação de incidente.</td><td>Autenticação imediata nos ambientes, remoção do sitemap, noindex, separar IDs de rastreamento; confirmar com a Linx a origem da base de dados e envolver o DPO.</td><td><span class="tag P0">P0</span></td><td>Baixo</td><td>Ambientes inacessíveis sem autenticação; zero URLs de homologação indexadas.</td><td><span class="tag t-c">Comprovado</span></td></tr>
+    <tr data-p="P0"><td>C-16</td><td>Ambientes de homologação</td><td>O arquivo /sitemap.xml (segundo índice, diferente do /sitemap/index declarado no robots.txt) lista 4 ambientes em tenmanya.core.dcg.com.br (/hlg, /old, /agrada-template-clean, /mobile); todos respondem 200 sem autenticação, cada um com 58 sitemaps espelhando o catálogo, e a raiz do host serve um espelho completo da loja. /mobile não tem banner de cookies, dispara Google Ads, GA4 e Meta com IDs de produção e expõe formulário de login.</td><td>/sitemap.xml e carga da página inicial de cada ambiente em 06/11/2026 (subagente de conformidade); login não testado.</td><td>Superfície de ataque exposta, contaminação de métricas e de públicos de anúncio de produção, conteúdo duplicado indexável. Se usarem base real de clientes, pode exigir avaliação de incidente.</td><td>Autenticação imediata nos ambientes, remoção do sitemap, noindex, separar IDs de rastreamento; confirmar com a Linx a origem da base de dados e envolver o DPO.</td><td><span class="tag P0">P0</span></td><td>Baixo</td><td>Ambientes inacessíveis sem autenticação; zero URLs de homologação indexadas.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P0"><td>C-17</td><td>Consentimento de cookies</td><td>A recusa não é respeitada: após &quot;Do not sell&quot; ou &quot;Reject&quot;, Meta Pixel (_fbp), Dinamize e Microsoft Clarity carregam e gravam. Antes de qualquer escolha já existem _ga/_gid e o Bitrix24 registra páginas; o Bitrix24 não consta do inventário do banner. Banner em inglês com termo da CCPA.</td><td>Cookies e requisições registrados por estado em contexto limpo (subagente de conformidade).</td><td>Risco regulatório alto (LGPD) e de confiança; gravação de sessão sem consentimento.</td><td>Bloqueio prévio de marketing e gravação de sessão; respeitar a recusa; banner em português com todas as ferramentas; definir base legal de métricas com o DPO; registro da escolha.</td><td><span class="tag P0">P0</span></td><td>Médio</td><td>Zero cookies de marketing e gravação após recusa; auditoria de consentimento aprovada.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P0"><td>C-26</td><td>Acessibilidade › foco</td><td>Nenhuma das 221 paradas de Tab da home e das 87 da PDP mostra indicador de foco; 37% das paradas da home caem em elementos invisíveis; busca sem rótulo; nenhuma página tem &lt;main&gt; nem link para pular conteúdo.</td><td>Navegação por teclado com capturas antes e depois do foco; axe-core 4.10.2 (subagente de acessibilidade).</td><td>Quem usa teclado não sabe onde está nem consegue comprar (WCAG 2.4.7, 2.4.3, 1.3.1).</td><td>Anel de foco visível; remover do Tab o que não está visível; landmarks e link de pular.</td><td><span class="tag P0">P0</span></td><td>Baixo</td><td>Auditoria de teclado sem falhas nos fluxos de compra.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P0"><td>C-34</td><td>Checkout › login</td><td>Zoom bloqueado (user-scalable=no); campos sem rótulo (leitor anuncia &quot;email@email.com&quot; e &quot;********&quot;); sem autocomplete; foco não retorna aos campos após o primeiro ciclo; rótulo &quot;E-mail(CPF/CNPJ)&quot;.</td><td>Inspeção e navegação por teclado no modal de login (subagente de acessibilidade).</td><td>Bloqueio para baixa visão e leitor de tela na etapa obrigatória (WCAG 1.4.4, 1.3.1, 1.3.5, 2.4.3).</td><td>Liberar zoom; rótulos visíveis; autocomplete=email e current-password; gestão de foco do modal.</td><td><span class="tag P0">P0</span></td><td>Baixo</td><td>Taxa de sucesso no login; auditoria WCAG do checkout.</td><td><span class="tag t-c">Comprovado</span></td></tr>
@@ -709,6 +709,8 @@ details.apx[open]>summary::before{content:"−"}
     <tr data-p="P1"><td>C-14</td><td>Filtros mobile</td><td>Opções com 14 px de altura de toque, texto #ABABAB (2,3:1), sem contagem; botão sem número de resultados.</td><td>Medição no painel mobile.</td><td>Erro de toque, leitura difícil, tentativa e erro.</td><td>Painel conforme seção F: blocos de 44 px, contagem ao vivo.</td><td><span class="tag P1">P1</span></td><td>Médio</td><td>Uso de filtros no mobile; tempo até o primeiro clique em produto.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P1"><td>C-20</td><td>Busca sem resultado</td><td>Página mostra seletor vazio, &quot;Filtros aplicados&quot; sem filtros e apenas &quot;Ir para a página inicial&quot;.</td><td>Busca por &quot;asdfgh&quot;.</td><td>Sessão termina sem alternativa.</td><td>Mensagem com o termo, sugestões de grafia, categorias principais, mais vendidos e contato.</td><td><span class="tag P1">P1</span></td><td>Baixo</td><td>Saída após busca sem resultado.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P1"><td>C-21</td><td>Comunicação de origem</td><td>&quot;Direto do Japão&quot; e &quot;todos importados diretamente do Japão&quot; convivem com &quot;em maioria importados&quot;; 8 de 30 PDPs amostradas informam &quot;Origem: China&quot;.</td><td>Home, Quem somos, Nossas lojas e seção Características de 30 PDPs (subagente de catálogo).</td><td>Risco de publicidade enganosa (CDC art. 37) e de confiança.</td><td>Origem como atributo por produto; frase institucional precisa; validação de Compras e Jurídico.</td><td><span class="tag P1">P1</span></td><td>Baixo</td><td>Divergências resolvidas.</td><td><span class="tag t-c">Comprovado</span></td></tr>
+    <tr data-p="P1"><td>C-28</td><td>SEO › headings e títulos</td><td>Home sem H1; só 13 de 82 listagens têm H1 real; o título &quot;Institucional&quot; do rodapé vira H1 em 60 de 150 páginas; title vazio em 37 de 150 URLs (listas, institucionais, políticas e 2 PDPs).</td><td>Amostra de 150 URLs (subagente de SEO).</td><td>Sinais fracos e conflitantes de relevância.</td><td>H1 visível no topo de cada modelo; rodapé sem heading de nível 1; title e descrição em todas as páginas indexáveis.</td><td><span class="tag P1">P1</span></td><td>Baixo</td><td>Cobertura no Search Console; páginas com title único.</td><td><span class="tag t-c">Comprovado</span></td></tr>
+    <tr data-p="P1"><td>C-29</td><td>SEO › canonical e dados estruturados</td><td>Canonical em http:// em 190 de 190 páginas e na url do JSON-LD; JSON-LD de produto com erros em 20 de 20 PDPs (aggregateRating 0/0, priceValidUntil fora do formato ISO, price com espaço, entidades HTML); breadcrumb com o primeiro item sem nome e o último rotulado &quot;Página Inicial&quot;.</td><td>Código-fonte de 190 páginas (subagente de SEO).</td><td>Perda de resultados avançados e sinais conflitantes.</td><td>Canonical https; JSON-LD válido em UTF-8 sem avaliação vazia; corrigir rótulos do breadcrumb.</td><td><span class="tag P1">P1</span></td><td>Baixo</td><td>Erros no relatório de resultados avançados.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P1"><td>C-42</td><td>PLP › paginação</td><td>Na ordenação padrão, /loucas exibe 674 itens em 19 páginas, mas só 520 são produtos diferentes: 154 nunca aparecem para quem pagina. O mesmo ocorre em Mesa, Cozinha, Casa e Japan Lifestyle.</td><td>Varredura completa da paginação (subagente de arquitetura, 06/11/2026); na ordenação A-Z os 674 aparecem.</td><td>Até cerca de 23% de um departamento fica invisível na navegação por páginas.</td><td>Critério de desempate estável na ordenação padrão (ex.: ID do produto); validar com a Linx.</td><td><span class="tag P1">P1</span></td><td>Baixo</td><td>Produtos únicos alcançáveis por paginação = total do departamento.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P1"><td>C-45</td><td>Checkout › mensagens</td><td>O leitor de tela recebe &quot;Pedido realizado com sucesso!&quot; antes de qualquer pagamento (elemento oculto anunciado).</td><td>Árvore de acessibilidade do checkout.</td><td>Usuário de leitor de tela pode abandonar achando que já comprou.</td><td>Remover da árvore de acessibilidade os estados não exibidos.</td><td><span class="tag P1">P1</span></td><td>Baixo</td><td>Teste com leitor de tela.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P1"><td>C-46</td><td>Responsivo e reflow</td><td>A 320 px e com zoom de 200%, as colunas do rodapé ficam cortadas ou exigem rolagem horizontal.</td><td>Teste de reflow (subagente de acessibilidade).</td><td>Políticas e contato inalcançáveis para baixa visão (WCAG 1.4.10).</td><td>Rodapé em coluna única abaixo de 600 px.</td><td><span class="tag P1">P1</span></td><td>Baixo</td><td>Sem rolagem horizontal a 320 px.</td><td><span class="tag t-c">Comprovado</span></td></tr>
@@ -718,6 +720,9 @@ details.apx[open]>summary::before{content:"−"}
     <tr data-p="P1"><td>C-50</td><td>Sacola mobile</td><td>&quot;Finalizar a compra&quot; em 964 px numa tela de 664 px, abaixo do cupom; o chat Bitrix24 cobre o botão &quot;Aplicar&quot;.</td><td>Medição no iPhone 13 emulado (subagente de CRO).</td><td>Esforço extra no último passo antes do checkout.</td><td>Botão de finalizar fixo ou no topo; cupom recolhido; widget de chat afastado das ações.</td><td><span class="tag P1">P1</span></td><td>Baixo</td><td>Cliques em finalizar por sessão com sacola no mobile.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P1"><td>C-53</td><td>Política de troca</td><td>Exige embalagem original para o arrependimento, devolve o valor em até 7 dias úteis em vez de imediatamente e dá 48 h para reclamar de avaria.</td><td>Leitura da política (subagente de conformidade).</td><td>Risco de desconformidade com o CDC art. 49 e o Decreto 7.962.</td><td>Revisão do texto pelo Jurídico.</td><td><span class="tag P1">P1</span></td><td>Baixo</td><td>Política revisada e publicada.</td><td><span class="tag t-h">Hipótese</span></td></tr>
     <tr data-p="P1"><td>C-54</td><td>Informações obrigatórias</td><td>Política de privacidade genérica (não nomeia Google, Microsoft, Meta, Dinamize, Bitrix24, Linx, nem países e prazos); sem Termos de Venda; razão social só na política; Fale Conosco anuncia formulário que não aparece.</td><td>Leitura das páginas institucionais (subagente de conformidade).</td><td>Lacunas frente à LGPD e ao Decreto 7.962/2013.</td><td>Política com terceiros, finalidades e bases legais; Termos de Venda; razão social e endereço no rodapé; corrigir Fale Conosco.</td><td><span class="tag P1">P1</span></td><td>Médio</td><td>Checklist do Decreto 7.962 completo.</td><td><span class="tag t-c">Comprovado</span></td></tr>
+    <tr data-p="P1"><td>C-58</td><td>Sitemap › produtos esgotados</td><td>3.311 dos 4.572 produtos do sitemap (72,4%) não têm link em nenhuma das 151 listagens; na amostra, 30 de 30 desses órfãos estavam esgotados, com status 200 e indexáveis.</td><td>Cruzamento sitemap × listagens; amostra de 30 órfãos e 15 linkados (subagente de SEO). A taxa total é extrapolada da amostra.</td><td>Orçamento de rastreamento gasto em páginas sem venda; resultados de busca que levam a produto indisponível.</td><td>Política para esgotados: manter com alternativas quando volta ao estoque, 301 para substituto, 410 quando descontinuado.</td><td><span class="tag P1">P1</span></td><td>Médio</td><td>% do sitemap com produtos disponíveis.</td><td><span class="tag t-c">Comprovado</span></td></tr>
+    <tr data-p="P1"><td>C-59</td><td>Sitemap › higiene</td><td>1.102 entradas de produto duplicadas, 332 produtos em estoque ausentes, nenhuma das 6.104 URLs com lastmod; inclui /sandbox, /rota-teste, /home-teste, 7 URLs que redirecionam para login e 3 políticas antigas.</td><td>Análise dos sitemaps (subagente de SEO).</td><td>Sinais de qualidade baixos para o Google; páginas de teste expostas.</td><td>Regenerar sitemap só com URLs canônicas, disponíveis e com lastmod; remover páginas de teste do ar.</td><td><span class="tag P1">P1</span></td><td>Baixo</td><td>Sitemap sem erros no Search Console.</td><td><span class="tag t-c">Comprovado</span></td></tr>
+    <tr data-p="P1"><td>C-60</td><td>Página 404</td><td>URLs inexistentes fazem 302 para /pesquisa?t=…, que responde 200 e é bloqueada no robots.txt; não existe página 404.</td><td>Requisições a URLs inexistentes (subagente de SEO e de arquitetura).</td><td>Soft 404 em massa; cliente cai numa busca sem contexto.</td><td>Responder 404 com página útil (busca, categorias, mais vendidos).</td><td><span class="tag P1">P1</span></td><td>Baixo</td><td>Status 404 em URLs inexistentes.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P2"><td>C-10</td><td>PLP › card</td><td>Parcelamento não aparece no card.</td><td>Listagem de Louças.</td><td>Preço de itens acima de R$ 100 parece menos acessível.</td><td>Exibir &quot;ou Nx sem juros&quot; quando houver 2 parcelas ou mais (mínimo R$ 50).</td><td><span class="tag P2">P2</span></td><td>Baixo</td><td>CTR em itens acima de R$ 100.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P2"><td>C-15</td><td>Filtros › estado</td><td>Opção selecionada some da lista; recarregar mantém resultado mas perde rótulo do chip; &quot;Categoria&quot; mostra departamentos de outras árvores; controles diferentes por grupo.</td><td>Teste de seleção, recarga e voltar.</td><td>Cliente perde a noção do que está aplicado.</td><td>Comportamentos da tabela da seção F; filtro em parâmetros de URL.</td><td><span class="tag P2">P2</span></td><td>Médio</td><td>Taxa de &quot;Limpar filtros&quot; logo após aplicar.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P2"><td>C-18</td><td>PDP › hierarquia</td><td>Nome repetido 3 vezes; &quot;Avaliações (0)&quot; em destaque; especificações no fim do texto; parágrafo institucional repetido em todas as descrições.</td><td>3 PDPs analisadas.</td><td>Informação de decisão difícil de achar.</td><td>Estrutura da seção B: fatos-chave, seções expansíveis, avaliações só com conteúdo.</td><td><span class="tag P2">P2</span></td><td>Médio</td><td>Rolagem até especificações; adição à sacola.</td><td><span class="tag t-c">Comprovado</span></td></tr>
@@ -727,8 +732,6 @@ details.apx[open]>summary::before{content:"−"}
     <tr data-p="P2"><td>C-24</td><td>Pagamentos</td><td>Rodapé mostra Boleto e Itaú; checkout lista crédito, débito e PIX; política cita crédito e Pix.</td><td>Rodapé, checkout e política.</td><td>Expectativa frustrada na última etapa.</td><td>Alinhar as três fontes ao que está ativo (a confirmar com Financeiro).</td><td><span class="tag P2">P2</span></td><td>Baixo</td><td>Contatos ao SAC sobre pagamento.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P2"><td>C-25</td><td>Autocomplete</td><td>Cards de produto cortados sem nome e preço; sugestão de termo pior (&quot;Tigelas&quot;).</td><td>Digitação de &quot;tige&quot; no desktop.</td><td>Sugestões pouco úteis.</td><td>Painel com termos, categorias com contagem e produtos completos (seção E).</td><td><span class="tag P2">P2</span></td><td>Médio</td><td>Cliques em sugestões.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P2"><td>C-27</td><td>Layout desktop</td><td>Rolagem horizontal de 15 px em todas as páginas.</td><td>Largura do documento 1455 px em janela de 1440 px.</td><td>Percepção de acabamento ruim; barra de rolagem extra.</td><td>Localizar elemento que excede o container e corrigir.</td><td><span class="tag P2">P2</span></td><td>Baixo</td><td>Largura do documento igual à da janela.</td><td><span class="tag t-c">Comprovado</span></td></tr>
-    <tr data-p="P2"><td>C-28</td><td>SEO › headings e títulos</td><td>Home sem H1; H1 de categoria é o texto do fim da página; /listas/* com title vazio.</td><td>Inspeção de headings e meta.</td><td>Sinais fracos de relevância.</td><td>H1 visível no topo; title e descrição nas listas ou noindex.</td><td><span class="tag P2">P2</span></td><td>Baixo</td><td>Cobertura no Search Console.</td><td><span class="tag t-c">Comprovado</span></td></tr>
-    <tr data-p="P2"><td>C-29</td><td>SEO › canonical e dados estruturados</td><td>Canonical em http; aggregateRating 0/0; nomes com entidades HTML no JSON-LD.</td><td>Código-fonte de PDP e PLP.</td><td>Avisos de dados estruturados; sinais conflitantes.</td><td>Canonical https; omitir avaliação vazia; JSON em UTF-8.</td><td><span class="tag P2">P2</span></td><td>Baixo</td><td>Erros no relatório de resultados avançados.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P2"><td>C-30</td><td>Textos</td><td>&quot;LOUCAS&quot;, &quot;INFORMACOES&quot;, &quot;Cartao de crédito&quot;, &quot;Coordernados&quot;, &quot;E-mail(CPF/CNPJ)&quot;.</td><td>Capturas e texto das páginas.</td><td>Aparência de descuido.</td><td>Revisão de textos do tema e do checkout.</td><td><span class="tag P2">P2</span></td><td>Baixo</td><td>Checklist de revisão concluído.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P2"><td>C-31</td><td>Banners</td><td>Texto, cupom e CTA embutidos na imagem; aviso com códigos internos PRD-00030909.</td><td>Banners da home.</td><td>Ilegível para leitor de tela; difícil de manter; jargão interno exposto.</td><td>Texto em HTML; regras de campanha escritas para o cliente.</td><td><span class="tag P2">P2</span></td><td>Médio</td><td>Cliques no hero por dispositivo.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P2"><td>C-32</td><td>Cabeçalho</td><td>Cabeçalho fixo de 181 px no desktop e 120 px no mobile.</td><td>Medição de elementos fixos.</td><td>Menos área útil para produtos.</td><td>Cabeçalho compacto ao rolar (56 px mobile, 72 px desktop).</td><td><span class="tag P2">P2</span></td><td>Médio</td><td>Rolagem por sessão; CTR da listagem.</td><td><span class="tag t-c">Comprovado</span></td></tr>
@@ -737,6 +740,7 @@ details.apx[open]>summary::before{content:"−"}
     <tr data-p="P2"><td>C-51</td><td>Parcelamento</td><td>&quot;6x sem juros&quot; só vale a partir de R$ 300 (parcela mínima R$ 50); banners não trazem a ressalva.</td><td>Política de pagamentos e banners.</td><td>Expectativa frustrada no checkout; risco de comunicação incompleta.</td><td>Exibir &quot;até 6x sem juros, parcela mínima R$ 50&quot; em todos os pontos.</td><td><span class="tag P2">P2</span></td><td>Baixo</td><td>Contatos ao SAC sobre parcelamento.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P2"><td>C-52</td><td>Cadastro</td><td>O cadastro exige data de nascimento e sexo para comprar.</td><td>Formulário de cadastro observado sem preenchimento (subagente de CRO).</td><td>Atrito no cadastro e coleta além do necessário (princípio da necessidade, LGPD).</td><td>Tornar opcionais ou remover; justificar a finalidade de cada dado.</td><td><span class="tag P2">P2</span></td><td>Baixo</td><td>Conclusão do cadastro.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P2"><td>C-55</td><td>Categorias › conteúdo</td><td>4 subcategorias vazias e 27 com menos de 5 produtos (42%); &quot;Gyuto&quot; só com uma santoku, &quot;Panelas&quot; sem panelas, &quot;Kimono&quot; com mais leques que kimonos; panela de arroz Zojirushi em Utensílios.</td><td>Árvore completa com contagem por nó, 1.629 produtos únicos (subagente de arquitetura).</td><td>Navegação leva a páginas vazias ou com produto errado.</td><td>Reclassificar antes da migração; ocultar nós vazios; árvore revisada no apêndice de arquitetura.</td><td><span class="tag P2">P2</span></td><td>Médio</td><td>Nós com 5 ou mais produtos e conteúdo correto.</td><td><span class="tag t-c">Comprovado</span></td></tr>
+    <tr data-p="P2"><td>C-61</td><td>Imagens e compartilhamento</td><td>69% das imagens das PDPs sem alt; nenhuma página com Open Graph; 4 listagens vazias indexáveis.</td><td>Amostra de páginas (subagente de SEO).</td><td>Acessibilidade e prévia ruim ao compartilhar em WhatsApp e redes.</td><td>Alt gerado do nome e da variante; og:title, og:image e og:description por modelo; noindex em listagem vazia.</td><td><span class="tag P2">P2</span></td><td>Baixo</td><td>Cobertura de alt e de Open Graph.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P3"><td>C-36</td><td>Home › seções</td><td>&quot;Compre o conjunto&quot; com 1 produto; &quot;Melhores combinações&quot; com CTA genérico; abas por material.</td><td>Captura da home.</td><td>Espaço nobre com pouco valor.</td><td>Substituir pela estrutura da seção B.</td><td><span class="tag P3">P3</span></td><td>Baixo</td><td>Cliques por seção.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P3"><td>C-37</td><td>Rodapé</td><td>Copyright 2025; selo Let&#x27;s Encrypt como prova de segurança; endereço da loja ausente; links com contraste de 2,3:1.</td><td>Captura do rodapé.</td><td>Sinais de confiança fracos.</td><td>Rodapé da seção B.</td><td><span class="tag P3">P3</span></td><td>Baixo</td><td>Cliques em políticas e contato.</td><td><span class="tag t-c">Comprovado</span></td></tr>
     <tr data-p="P3"><td>C-38</td><td>Menu desktop</td><td>Rótulos quebram em 2 linhas e desalinham.</td><td>Captura do cabeçalho.</td><td>Leitura irregular.</td><td>Nomes curtos ou uma linha com espaçamento menor.</td><td><span class="tag P3">P3</span></td><td>Baixo</td><td>–</td><td><span class="tag t-c">Comprovado</span></td></tr>
@@ -8310,7 +8314,858 @@ Base: auditoria de UX já entregue (<code>report/body.html</code>). Este documen
 <li>Scripts: <code>axe-run.js</code>, <code>sum.js</code>, <code>cc.js</code>, <code>struct.js</code>, <code>tabwalk.js</code>, <code>probe_*.js</code>, <code>reflow.js</code>, <code>hscroll*.js</code>.</li>
 </ul></div></details>
 <details class="apx"><summary>Performance e Core Web Vitals <span class="tag t-h">pendente</span></summary><p class="note">Relatório ainda não entregue.</p></details>
-<details class="apx"><summary>SEO técnico <span class="tag t-h">pendente</span></summary><p class="note">Relatório ainda não entregue.</p></details>
+<details class="apx" id="apx-seo"><summary>SEO técnico</summary><div class="apx-body"><h4>Auditoria de SEO técnico: www.tenmanya.com.br (Linx Commerce)</h4>
+<p>Coleta em 06/11/2026 com Playwright (Chromium padrão, user agent padrão, sem contornar proteção), requisições sequenciais com pausa de 1 s. Somente leitura; nenhum login foi tentado.</p>
+<p>Classificação de cada achado:
+- <strong>Comprovado</strong>: observado e registrado nos dados brutos.
+- <strong>Hipótese</strong>: inferência plausível, ainda não verificada.
+- <strong>Boa prática</strong>: recomendação sem defeito observado.</p>
+<p>Onde corrigir:
+- <strong>Plataforma</strong>: configuração no admin Linx, na infraestrutura ou com o suporte Linx/agência.
+- <strong>Tema</strong>: template HTML do front.
+- <strong>Conteúdo</strong>: cadastro e CMS.</p>
+<p>O local de correção é Hipótese quando depender de recursos da plataforma que não foram verificados.</p>
+<p>Prioridade nesta seção:
+- <strong>P0</strong>: expõe o ambiente ou afeta 100% das páginas de modo grave e é barato de corrigir.
+- <strong>P1</strong>: afeta rastreamento, indexação ou resultados enriquecidos em escala.
+- <strong>P2</strong>: qualidade e consistência.
+- <strong>P3</strong>: refinamento.</p>
+<p>Esforço: B = baixo (configuração), M = médio (ajuste de tema), A = alto (dados/integração).</p>
+<hr />
+<h2>1. Números-chave</h2>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+<th>Fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URLs no sitemap principal (<code>/sitemap/index</code>, 1 geral + 57 de produtos)</td>
+<td>6.104 entradas</td>
+<td><code>sitemap_urls.csv</code></td>
+</tr>
+<tr>
+<td>Produtos: entradas / URLs únicas</td>
+<td>5.674 / 4.572 (<strong>1.102 entradas duplicadas</strong>, 19,4%; 922 URLs 2×, 90 URLs 3×, sempre em arquivos diferentes)</td>
+<td><code>sitemap_summary.json</code></td>
+</tr>
+<tr>
+<td>Demais tipos</td>
+<td>265 marcas, 73 subcategorias, 45 listas, 26 páginas avulsas, 11 conteúdos, 9 categorias, home</td>
+<td>idem</td>
+</tr>
+<tr>
+<td>Protocolo das URLs do sitemap</td>
+<td>6.104 https / 0 http</td>
+<td>idem</td>
+</tr>
+<tr>
+<td><code>&lt;lastmod&gt;</code></td>
+<td>0 de 6.104</td>
+<td>idem</td>
+</tr>
+<tr>
+<td>Produtos no sitemap sem <code>&lt;image:image&gt;</code></td>
+<td>49</td>
+<td>idem</td>
+</tr>
+<tr>
+<td>Amostra de status (150 URLs)</td>
+<td>150 terminam em 200; 140 diretas; <strong>10 redirecionam</strong> (7 para <code>/login</code>, 3 para <code>/pesquisa</code>)</td>
+<td><code>status150.json</code></td>
+</tr>
+<tr>
+<td>Canonical em http://</td>
+<td><strong>100%</strong> (150/150 e 40/40)</td>
+<td><code>status150.json</code>, <code>deep40.json</code></td>
+</tr>
+<tr>
+<td><code>&lt;title&gt;</code> vazio na amostra de 150</td>
+<td><strong>37 (24,7%)</strong>: 15/15 listas, 12/26 avulsas, 8/11 conteúdos, 2/50 produtos</td>
+<td><code>status150.json</code></td>
+</tr>
+<tr>
+<td>H1 "Institucional" (rodapé)</td>
+<td>60 de 150 páginas</td>
+<td><code>status150.json</code></td>
+</tr>
+<tr>
+<td>Listagens (82) com H1 real</td>
+<td>13 (16%)</td>
+<td><code>listings.json</code></td>
+</tr>
+<tr>
+<td>Produtos do sitemap sem link em nenhuma listagem</td>
+<td><strong>3.311 de 4.572 (72,4%)</strong></td>
+<td><code>orphans.json</code></td>
+</tr>
+<tr>
+<td>Disponibilidade: órfãos × linkados</td>
+<td>30/30 órfãos OutOfStock; 15/15 linkados InStock</td>
+<td><code>avail_result.json</code></td>
+</tr>
+<tr>
+<td>Produtos linkados nas listagens, mas fora do sitemap</td>
+<td><strong>332</strong></td>
+<td><code>orphans.py</code></td>
+</tr>
+<tr>
+<td>Subcategorias do sitemap sem link no menu nem na categoria-mãe</td>
+<td><strong>18 de 73</strong></td>
+<td><code>links.json</code></td>
+</tr>
+<tr>
+<td>PDPs com JSON-LD válido (JSON)</td>
+<td>20/20; com erros de conteúdo: 20/20</td>
+<td><code>pdp_jsonld.csv</code></td>
+</tr>
+<tr>
+<td>Imagens sem atributo alt nas PDPs</td>
+<td>218 de 314 <code>&lt;img&gt;</code> (69%); 66 imagens visíveis da galeria sem alt</td>
+<td><code>deep40.json</code></td>
+</tr>
+<tr>
+<td>Open Graph / Twitter Card</td>
+<td>0 de 40 páginas</td>
+<td><code>deep40.json</code></td>
+</tr>
+<tr>
+<td>Ambientes de homologação públicos</td>
+<td>4 (/hlg, /old, /agrada-template-clean, /mobile), todos com 200</td>
+<td><code>hlg_probe.json</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2. Achados por tema</h2>
+<h3>2.1 Sitemaps</h3>
+<p><strong>S1. <code>/sitemap.xml</code> lista quatro ambientes de homologação</strong>
+- Comprovado.
+- <code>https://www.tenmanya.com.br/sitemap.xml</code> é um índice com 5 entradas:
+  - <code>/sitemap/index</code> (produção);
+  - <code>https://tenmanya.core.dcg.com.br/{mobile,hlg,agrada-template-clean,old}/sitemap/index</code>.
+- Cada índice de homologação tem 58 sitemaps filhos, espelhando o catálogo.
+- O robots.txt de produção declara apenas <code>Sitemap: http://www.tenmanya.com.br/sitemap/index</code> (em http, com 301 para https). Os dois índices divergem.
+- Observação: o Google só aceita URLs de outro host num sitemap quando há verificação cruzada. Como o host dcg bloqueia tudo no robots.txt, o efeito direto em ranking tende a ser pequeno (Hipótese). O problema principal é exposição e higiene.
+- Ver S3.</p>
+<p><strong>S2. Duplicidade e lacunas no sitemap de produtos</strong>
+- Comprovado.
+- 1.102 entradas repetidas entre arquivos diferentes (ex.: <code>/mini-porta-objeto-00013821-p380272</code> em <code>products/9</code> e <code>products/10</code>).
+- 332 produtos linkados nas listagens, todos em estoque na amostra, não aparecem em nenhum arquivo.
+- Hipótese de causa: a paginação do gerador ordena de forma instável, então itens se repetem entre páginas e outros ficam de fora.
+- Correção (Plataforma, suporte Linx):
+  - ordenação determinística por ID;
+  - validação de unicidade;
+  - incluir <code>&lt;lastmod&gt;</code> real.
+- P1, esforço B/M.</p>
+<p><strong>S3. Sitemap dominado por produtos fora de estoque e sem links internos</strong>
+- Comprovado na amostra; extrapolação é Hipótese.
+- 3.311 produtos (72,4%) não aparecem em nenhuma das 151 páginas de listagem percorridas (82 categorias e subcategorias, com paginação completa via <code>rel=next</code>).
+- Amostra aleatória de 30 órfãos: 30/30 com <code>availability: OutOfStock</code> e status 200.
+- Amostra de 15 linkados: 15/15 InStock.
+- Amostra aleatória de 17 PDPs do sitemap: 14 OutOfStock (82%).
+- A plataforma esconde esgotados das listagens, mas mantém as PDPs com <code>index,follow</code>, no sitemap e com <code>priority 0.9 / daily</code>.
+- Ver a estratégia na seção 4.
+- P1, esforço M (regra de negócio + Plataforma).</p>
+<p><strong>S4. Lixo no sitemap geral</strong>
+- Comprovado. Itens listados:
+  - Páginas de teste ou internas, sem title: <code>/sandbox</code>, <code>/rota-teste</code>, <code>/home-teste</code>, <code>/try-it</code>, <code>/prova</code>, <code>/introducao</code>, <code>/video-de-introducao</code>, <code>/resumo-carrinho</code>, <code>/basket-modal</code>, <code>/promo</code>, <code>/mesaposta</code>, <code>/blog</code> (sem conteúdo).
+  - URLs que redirecionam para login: <code>/selectvariation-sv</code>, <code>/quickview-q</code>, <code>/black-friday-q</code>, <code>/treinamento-x</code>, <code>/cadastra</code> (301 → <code>/login</code>), <code>/painel-do-cliente</code> e <code>/painel-do-cliente/pedidos</code> (302 → login). Essas duas também estão em <code>Disallow</code> no robots.txt.
+  - 3 políticas com URL antiga que fazem 302 para a busca bloqueada: <code>/conteudo/politica-de-privacidade</code>, <code>/conteudo/politicas-de-pagamentos</code>, <code>/conteudo/politica-de-troca</code>. O rodapé aponta para <code>/conteudo/informacoes/...</code>, que funciona.
+  - 45 <code>/listas/*</code> de uso interno ou campanha, por exemplo <code>merchant-nao-mexer</code>, <code>exemplo-chamado-ad-23124</code>, <code>catalogo-do-facebook</code>, <code>email-produtos</code>, <code>loucas-facebook</code>, <code>full</code>, <code>curva-a</code>.
+  - Pares quase duplicados: <code>yukata-e-kimono</code>/<code>yukata-e-quimono</code>, <code>todos-os-produtos</code>/<code>todos-produtos</code>, <code>dia-das-maes</code>/<code>dia-das-maes-2</code>.
+- Correção: despublicar no CMS ou excluir do sitemap; fazer 301 das políticas antigas para as novas.
+- P1, esforço B (Conteúdo/Plataforma).</p>
+<p><strong>S5. <code>changefreq</code>/<code>priority</code> uniformes e sem <code>lastmod</code></strong>
+- Comprovado.
+- Todos os produtos têm 0.9/daily. O Google ignora esses campos; o que conta é <code>lastmod</code> confiável, e ele não existe.
+- P3, esforço B (Plataforma).</p>
+<h3>2.2 Ambientes de homologação (tenmanya.core.dcg.com.br)</h3>
+<p>Todos Comprovados, via <code>hlg_probe.json</code>:
+- <code>https://tenmanya.core.dcg.com.br/</code> devolve 200 e serve um <strong>espelho completo da produção</strong>, sem redirecionar para www. A versão http faz 301 para www.
+- <code>/hlg</code>, <code>/old</code> e <code>/agrada-template-clean</code> respondem 200 sem autenticação, com <code>&lt;meta name="robots" content="index,follow"&gt;</code>. <code>/mobile</code> responde 200 sem meta robots.
+- Nenhum envia <code>X-Robots-Tag</code>.
+- O canonical aponta para <code>http://www.tenmanya.com.br/</code>.
+- O host tem robots.txt com <code>User-agent: * / Disallow: /</code>.</p>
+<p>Riscos:
+- Com o robots bloqueando, o Google não lê o <code>noindex</code> nem o canonical. URLs linkadas externamente podem ser indexadas "sem conteúdo" (Hipótese; confirmar no Search Console ou com <code>site:tenmanya.core.dcg.com.br</code>).
+- Exposição pública de versões antigas ou de teste da loja.</p>
+<p>Correção:
+1. Autenticação HTTP (401) ou restrição por IP em todo o host dcg, inclusive a raiz.
+2. Retirar as 4 entradas de <code>/sitemap.xml</code>, ou fazer <code>/sitemap.xml</code> devolver 301 para <code>/sitemap/index</code>.
+3. Se o bloqueio por senha não for possível: <code>X-Robots-Tag: noindex</code> e liberar o robots, para que o noindex seja lido.</p>
+<ul>
+<li><strong>P0</strong>, esforço B (Plataforma/infra, Linx ou agência).</li>
+</ul>
+<h3>2.3 Canonical, redirecionamentos e duplicidade de URL</h3>
+<p>Teste de variantes (<code>variants_result.json</code>), todos Comprovados:</p>
+<table>
+<thead>
+<tr>
+<th>Variante</th>
+<th>Resultado</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>http://www, https sem www, barra final</td>
+<td>301 → URL https canônica</td>
+<td>Correto</td>
+</tr>
+<tr>
+<td><code>/Tigela-...</code> (maiúsculas), <code>/qualquer-texto-p132497</code>, <code>/loucas/&lt;slug-produto&gt;</code></td>
+<td><strong>200</strong> (sem redirecionamento), canonical para a PDP</td>
+<td>Aceitável graças ao canonical, mas cria espaço infinito de URLs. Ideal: 301 para o slug oficial (Plataforma, P3)</td>
+</tr>
+<tr>
+<td><code>?utm_source=</code>, <code>?sku=</code>, <code>?ordenacao=</code></td>
+<td>200, canonical sem parâmetro</td>
+<td>Correto</td>
+</tr>
+<tr>
+<td><code>/loucas?pg=1</code> e <code>?pg=0</code></td>
+<td>canonical <code>/loucas</code></td>
+<td>Correto</td>
+</tr>
+<tr>
+<td><code>/loucas?pg=2</code></td>
+<td>canonical próprio (<code>?pg=2</code>)</td>
+<td>Correto (paginação autocanônica)</td>
+</tr>
+<tr>
+<td><code>/loucas?pg=99</code></td>
+<td>200, <strong>0 produtos</strong>, canonical <code>?pg=19</code></td>
+<td>Soft 404 de baixo risco (só alcançável por URL manual)</td>
+</tr>
+<tr>
+<td><code>/pagina-que-nao-existe-xyz123</code>, <code>/produto-inexistente-p999999999</code>, <code>/produto/132497</code></td>
+<td><strong>302 → <code>/pesquisa?t=...</code> (200)</strong></td>
+<td><strong>Soft 404</strong>: URL inexistente nunca devolve 404/410, e o destino está bloqueado no robots.txt</td>
+</tr>
+</tbody>
+</table>
+<p><strong>C1. Canonical em http:// em 100% das páginas</strong>
+- Comprovado.
+- Afeta canonical, <code>url</code> do JSON-LD e <code>og:url</code>, que está ausente.
+- O sitemap e os redirecionamentos usam https, então os sinais se contradizem.
+- Correção: definir o domínio base como <code>https://www.tenmanya.com.br</code> na configuração da loja (Plataforma, Hipótese sobre o campo exato) ou no tema.
+- P1, esforço B.</p>
+<p><strong>C2. Ausência de 404/410</strong>
+- Comprovado.
+- Correção: devolver 404 com página útil (busca e categorias) para URLs inexistentes; 410 ou 301 para produtos descontinuados (ver seção 4).
+- P1, esforço M (Plataforma).</p>
+<p><strong>C3. Produto x categoria</strong>
+- Comprovado.
+- As PDPs ficam na raiz (<code>/slug-pID</code>). O mesmo produto não gera URLs diferentes por categoria, e 1.206 produtos aparecem em 2 listagens (categoria + subcategoria) com a mesma URL. Não há duplicidade por caminho.</p>
+<h3>2.4 On-page (amostra de 40 páginas: home, 9 categorias, 10 subcategorias, 20 PDPs)</h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Home</th>
+<th>Categorias (9)</th>
+<th>Subcategorias (10)</th>
+<th>PDPs (20)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Title</td>
+<td>"Tenman-ya | Sua Casa Japonesa" (29)</td>
+<td>"Louças | TENMAN-YA" (16–33 car.)</td>
+<td>"Hashi | Mesa | TENMAN-YA" (24–49)</td>
+<td>nome do produto (25–81); 2/50 na amostra de status <strong>vazios</strong></td>
+</tr>
+<tr>
+<td>Meta description</td>
+<td>lista de palavras-chave sem frase (128)</td>
+<td>boa, 147–200 car.</td>
+<td>boa, 112–200</td>
+<td>"Nome - MARCA" (36–91), sem proposta de valor</td>
+</tr>
+<tr>
+<td>H1 real</td>
+<td>0</td>
+<td>3/9 (loucas, okaeshi-gift, japan-lifestyle), todos no fim da página (y ≈ 2.400–3.900 px)</td>
+<td>2/10</td>
+<td>20/20 (= title)</td>
+</tr>
+<tr>
+<td>H1 "Institucional" extra</td>
+<td>—</td>
+<td>2</td>
+<td>4</td>
+<td>11/20</td>
+</tr>
+<tr>
+<td>Canonical</td>
+<td>http</td>
+<td>http</td>
+<td>http</td>
+<td>http</td>
+</tr>
+<tr>
+<td>hreflang</td>
+<td>nenhum</td>
+<td>nenhum</td>
+<td>nenhum</td>
+<td>nenhum</td>
+</tr>
+<tr>
+<td>Meta robots</td>
+<td>index,follow</td>
+<td>index,follow</td>
+<td>index,follow</td>
+<td>index,follow</td>
+</tr>
+<tr>
+<td>JSON-LD</td>
+<td>nenhum</td>
+<td>nenhum (só microdata de breadcrumb)</td>
+<td>idem</td>
+<td>Product</td>
+</tr>
+<tr>
+<td>Alt</td>
+<td>4 banners com alt vazio</td>
+<td>sem falhas</td>
+<td>sem falhas</td>
+<td>218/314 <code>&lt;img&gt;</code> sem alt; a galeria principal não tem alt</td>
+</tr>
+<tr>
+<td>OG/Twitter</td>
+<td>ausente</td>
+<td>ausente</td>
+<td>ausente</td>
+<td>ausente</td>
+</tr>
+<tr>
+<td>Links internos únicos</td>
+<td>137</td>
+<td>103–129</td>
+<td>91–129</td>
+<td>≈ 89</td>
+</tr>
+</tbody>
+</table>
+<p>Achados:
+- <strong>O1. Título vazio</strong> (Comprovado). 37/150 da amostra, incluindo:
+  - Institucionais: Quem somos, Fale conosco, Nossas lojas, Políticas de entrega, Tire suas dúvidas.
+  - As políticas novas (<code>/conteudo/informacoes/politica-de-privacidade</code> e <code>/politica-de-troca</code>).
+  - Todas as listas.
+  - 2 PDPs, <code>kit-de-porcelana-japonesa-budou-2-pecas-...-p406425</code> e <code>...tokusa...-p406444</code>, com description " - TENMANYA".</p>
+<p>Correção: preencher no CMS; no tema, usar fallback <code>{{H1}} | Tenman-ya</code> quando o campo estiver vazio. P1, esforço B/M (Conteúdo + Tema).
+- <strong>O2. H1 ausente ou no rodapé</strong> (Comprovado):
+  - home sem H1;
+  - 69 de 82 listagens sem H1 real;
+  - o texto de SEO das categorias é o H1 no fim da página;
+  - o rodapé "Institucional" vira H1 em 40% das páginas.</p>
+<p>Correção: H1 visível no topo com o nome da categoria; rodapé com <code>&lt;p&gt;</code> ou <code>&lt;h2&gt;</code>. P1, esforço M (Tema).
+- <strong>O3. Titles de categoria curtos e genéricos</strong> (Comprovado; o benefício é Boa prática). "Louças | TENMAN-YA" não contém "japonesas". Sugestão: "Louças Japonesas: Porcelana, Cerâmica e Melamina | Tenman-ya". Só um título duplicado entre listagens: "Decoração | Casa Deco | TENMAN-YA" em <code>/casa-deco</code> e <code>/casa-deco/decoracao</code>. P2, esforço B (Conteúdo).
+- <strong>O4. Meta description de PDP</strong> = "Nome - MARCA" (Comprovado). Template: "{Nome} da {Marca}. {Material/medida}. Envio para todo o Brasil, parcelamento…". P2, esforço M (Tema).
+- <strong>O5. Alt da galeria de produto ausente</strong> (Comprovado). Use o nome do produto + "vista N". P2, esforço B/M (Tema).
+- <strong>O6. Sem Open Graph/Twitter Card</strong> (Comprovado). Afeta pré-visualizações no WhatsApp, Facebook e Pinterest, canais relevantes para decoração. Ranking não é afetado. P2, esforço B (Tema).
+- <strong>O7. hreflang ausente</strong> (Boa prática): correto para um site monolíngue pt-BR; nada a fazer.</p>
+<h3>2.5 Dados estruturados</h3>
+<p>PDP (20/20 com JSON válido; <code>pdp_jsonld.csv</code>), todos Comprovados:</p>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Situação</th>
+<th>Severidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>aggregateRating</code></td>
+<td>ratingValue 0 / reviewCount 0 em 20/20</td>
+<td>Erro: valor fora do intervalo. Omitir sem avaliações</td>
+</tr>
+<tr>
+<td><code>offers.priceValidUntil</code></td>
+<td>"6/11/2026": formato não ISO e igual ao dia da coleta, 20/20</td>
+<td>Erro ou aviso de data inválida; usar <code>2026-12-31</code> ou omitir</td>
+</tr>
+<tr>
+<td><code>offers.price</code></td>
+<td>string com espaço inicial (" 250.00"), 20/20</td>
+<td>Risco de parsing; usar <code>250.00</code></td>
+</tr>
+<tr>
+<td><code>offers.priceCurrency</code></td>
+<td>BRL</td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>offers.availability</code></td>
+<td>InStock/OutOfStock coerentes com a página</td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>image</code></td>
+<td>1–6 URLs absolutas</td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>brand</code></td>
+<td>presente (Brand)</td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>name</code>/<code>description</code></td>
+<td>entidades HTML (<code>A&amp;#231;o</code>) em 8/20; description = name em 20/20</td>
+<td>Qualidade</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>http:// em 20/20</td>
+<td>Ver C1</td>
+</tr>
+<tr>
+<td><code>gtin</code>, <code>itemCondition</code>, <code>shippingDetails</code>, <code>hasMerchantReturnPolicy</code></td>
+<td>ausentes em 20/20</td>
+<td>Boa prática (listagens de comerciante)</td>
+</tr>
+<tr>
+<td><code>offers.name</code></td>
+<td>sufixo "U - U" em 8/20</td>
+<td>Qualidade</td>
+</tr>
+</tbody>
+</table>
+<p><strong>D1. BreadcrumbList (microdata) com rótulos deslocados em 100% das páginas</strong> (Comprovado):
+- O item 1 (<code>/</code>) tem <code>name</code> vazio.
+- O último item, a própria página, recebe o nome "Página Inicial". Ex.: <code>∅ &gt; Facas &gt; Nakiri (Legumes) &gt; Página Inicial</code>.
+- O Google pode exibir "Página Inicial" como rótulo no resultado ou rejeitar o item.
+- Correção no Tema: item 1 = "Página inicial"; último item = nome da página.
+- P1, esforço B.</p>
+<p><strong>D2.</strong> Corrigir aggregateRating, priceValidUntil e price no template da PDP. P1, esforço B (Tema; Hipótese: o JSON-LD é montado no tema, como sugerem os espaços e tabulações do bloco).</p>
+<p><strong>D3.</strong> A home não tem <code>Organization</code> nem <code>WebSite</code> (Boa prática): incluir logo, sameAs (Instagram, Facebook, YouTube) e contato. P2, esforço B (Tema).</p>
+<p><strong>D4.</strong> Categoria errada no cadastro (Comprovado no relatório anterior, confirmado aqui): faca Santoku em "Nakiri (Legumes)". A marcação apenas reflete o cadastro. P2, esforço B (Conteúdo).</p>
+<h3>2.6 Paginação e parâmetros</h3>
+<ul>
+<li><strong>Comprovado</strong>: <code>?pg=N</code> é autocanônica e tem <code>&lt;link rel=next&gt;</code>. O title e a description repetem os da página 1 (P3: acrescentar "– Página N").</li>
+<li><strong>Comprovado</strong>: a âncora "anterior" da página 1 aponta para <code>?pg=0&amp;</code> e a da página 2 para <code>?pg=1&amp;</code>. São duplicatas da página 1, mitigadas pelo canonical. A âncora "Página Inicial" da página 2 aponta para a própria <code>?pg=2</code>. P3, esforço B (Tema).</li>
+<li><strong>Comprovado</strong>: a paginação visível mostra só 5 números. <code>/loucas</code> tem 19 páginas, então os produtos das páginas 6–19 exigem cliques sequenciais.</li>
+<li><strong>Comprovado (relatório anterior)</strong>: filtros em âncora <code>#</code>, invisíveis para buscadores. Ordenação (<code>?ordenacao=</code>) com canonical para a base, o que é correto.</li>
+</ul>
+<h3>2.7 Linkagem interna</h3>
+<p><strong>L1. 18 subcategorias órfãs</strong> (Comprovado): estão no sitemap, mas não aparecem como link no menu, na home nem na página da categoria-mãe. Contagem aproximada de produtos linkados em cada uma:</p>
+<table>
+<thead>
+<tr>
+<th>Subcategoria</th>
+<th>Produtos linkados (aprox.)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/mesa/hashi</code></td>
+<td>121 (4 páginas)</td>
+</tr>
+<tr>
+<td><code>/mesa/infantil</code></td>
+<td>68</td>
+</tr>
+<tr>
+<td><code>/cozinha/potes</code></td>
+<td>27</td>
+</tr>
+<tr>
+<td><code>/japan-lifestyle/origami</code></td>
+<td>24</td>
+</tr>
+<tr>
+<td><code>/japan-lifestyle/kimono</code></td>
+<td>23</td>
+</tr>
+<tr>
+<td><code>/cozinha/tabuas</code></td>
+<td>8</td>
+</tr>
+<tr>
+<td><code>/facas/yanagiba-sushi-sashimi</code></td>
+<td>7</td>
+</tr>
+<tr>
+<td><code>/facas/outras-facas</code></td>
+<td>7</td>
+</tr>
+<tr>
+<td><code>/cozinha/pia</code></td>
+<td>7</td>
+</tr>
+<tr>
+<td><code>/casa-deco/pet</code></td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>/casa-deco/limpeza</code></td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>/cozinha/frigideiras</code></td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>/japan-lifestyle/vasos-decorativos</code></td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>/cozinha/vestuario</code></td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>/japan-lifestyle/noren</code></td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>/japan-lifestyle/mascaras-noh</code></td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>/cozinha/eletroportateis</code></td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>/casa-deco/kids</code></td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>A única via de acesso é o breadcrumb das PDPs (Hipótese de profundidade 4+). Correção: incluir as subcategorias com estoque no menu e num bloco "Subcategorias" no topo da categoria-mãe (Plataforma: cadastro do menu). P1, esforço B.</p>
+<p><strong>L2. Listagens vazias ou ralas no sitemap</strong> (Comprovado):
+- 4 com 0 produtos: <code>/okaeshi-gift/envelopes</code>, <code>/japan-lifestyle/mascaras-noh</code>, <code>/cozinha/eletroportateis</code>, <code>/casa-deco/kids</code>.
+- 20 com 1 a 3 produtos.
+- Correção:
+  - noindex temporário ou fusão na categoria-mãe com 301 quando ficarem vazias por muito tempo;
+  - não exibir no menu quando estiverem vazias.
+- P2, esforço B.</p>
+<p><strong>L3. Profundidade de clique</strong> dos produtos linkados (estimativa por menu → listagem → página; Comprovado como limite inferior):</p>
+<table>
+<thead>
+<tr>
+<th>Profundidade</th>
+<th>Produtos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2 cliques</td>
+<td>282</td>
+</tr>
+<tr>
+<td>3 cliques</td>
+<td>1.178</td>
+</tr>
+<tr>
+<td>≥ 4 cliques</td>
+<td>133</td>
+</tr>
+</tbody>
+</table>
+<p>Os 3.311 esgotados não têm caminho por listagem.</p>
+<p><strong>L4. Links de cabeçalho para a busca bloqueada</strong> (Comprovado):
+- 7 "termos mais buscados" apontam para <code>/pesquisa?t=...</code>, bloqueada no robots.
+- "Ver ofertas" aponta para <code>//pesquisa?t=</code> (barra dupla, busca vazia).
+- Melhor apontar para <code>/ofertas</code> e para as categorias ou listas curadas. P2, esforço B (Conteúdo/Tema).</p>
+<h3>2.8 robots.txt</h3>
+<p>Comprovado: o arquivo é coerente no geral (bloqueia carrinho, painel, login, <code>/pesquisa</code>, <code>/Config</code>).</p>
+<p>Observações:
+- <code>Sitemap:</code> em http (P3).
+- Libera <code>/listas/</code>, mas as listas não têm title (O1).
+- O <code>/sitemap/general</code> inclui <code>/painel-do-cliente</code>, que está bloqueado.</p>
+<hr />
+<h2>3. Inventário priorizado</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Achado</th>
+<th>Classe</th>
+<th>P</th>
+<th>Esforço</th>
+<th>Onde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Homologação pública (4 ambientes + espelho na raiz do host dcg) e listada em <code>/sitemap.xml</code></td>
+<td>Comprovado</td>
+<td>P0</td>
+<td>B</td>
+<td>Plataforma/infra</td>
+</tr>
+<tr>
+<td>2</td>
+<td>72% dos produtos do sitemap esgotados e sem link interno, todos com 200 e index</td>
+<td>Comprovado (amostra)</td>
+<td>P1</td>
+<td>M</td>
+<td>Plataforma + regra de negócio</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Sitemap com 1.102 entradas duplicadas e 332 produtos ativos ausentes; sem lastmod</td>
+<td>Comprovado</td>
+<td>P1</td>
+<td>B/M</td>
+<td>Plataforma</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Canonical e JSON-LD <code>url</code> em http:// em 100%</td>
+<td>Comprovado</td>
+<td>P1</td>
+<td>B</td>
+<td>Plataforma/Tema</td>
+</tr>
+<tr>
+<td>5</td>
+<td>URLs inexistentes fazem 302 para a busca bloqueada (sem 404)</td>
+<td>Comprovado</td>
+<td>P1</td>
+<td>M</td>
+<td>Plataforma</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Title vazio em 25% da amostra (institucionais, políticas, listas, 2 PDPs)</td>
+<td>Comprovado</td>
+<td>P1</td>
+<td>B</td>
+<td>Conteúdo + Tema (fallback)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Product JSON-LD: aggregateRating 0/0, priceValidUntil não ISO, price com espaço (100% das PDPs)</td>
+<td>Comprovado</td>
+<td>P1</td>
+<td>B</td>
+<td>Tema</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Breadcrumb com "Página Inicial" no último item e item 1 sem nome (100%)</td>
+<td>Comprovado</td>
+<td>P1</td>
+<td>B</td>
+<td>Tema</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Home sem H1; 84% das listagens sem H1 real; "Institucional" como H1</td>
+<td>Comprovado</td>
+<td>P1</td>
+<td>M</td>
+<td>Tema</td>
+</tr>
+<tr>
+<td>10</td>
+<td>18 subcategorias órfãs (Hashi, Infantil, Potes, Origami, Kimono…)</td>
+<td>Comprovado</td>
+<td>P1</td>
+<td>B</td>
+<td>Plataforma (menu)</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Páginas de teste, de login e políticas antigas (302 → busca) no sitemap; 45 listas internas</td>
+<td>Comprovado</td>
+<td>P1</td>
+<td>B</td>
+<td>Conteúdo/Plataforma</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Filtros em <code>#</code>, sem páginas de demanda (ver seção 4)</td>
+<td>Comprovado</td>
+<td>P2</td>
+<td>A</td>
+<td>Tema + Plataforma</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Alt ausente na galeria (69% das <code>&lt;img&gt;</code> da PDP) e 4 banners na home</td>
+<td>Comprovado</td>
+<td>P2</td>
+<td>B/M</td>
+<td>Tema/Conteúdo</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Sem Open Graph/Twitter Card</td>
+<td>Comprovado</td>
+<td>P2</td>
+<td>B</td>
+<td>Tema</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Titles de categoria genéricos; description da PDP "Nome - MARCA"</td>
+<td>Comprovado</td>
+<td>P2</td>
+<td>B/M</td>
+<td>Conteúdo/Tema</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Listagens vazias ou com 1–3 produtos indexáveis (24)</td>
+<td>Comprovado</td>
+<td>P2</td>
+<td>B</td>
+<td>Conteúdo</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Links do cabeçalho para <code>/pesquisa</code> e <code>//pesquisa?t=</code></td>
+<td>Comprovado</td>
+<td>P2</td>
+<td>B</td>
+<td>Tema/Conteúdo</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Sem Organization/WebSite na home; sem gtin/itemCondition/shipping/return</td>
+<td>Boa prática</td>
+<td>P2</td>
+<td>B</td>
+<td>Tema</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Slug alternativo, maiúsculas e <code>/categoria/produto</code> com 200 (canonical mitiga)</td>
+<td>Comprovado</td>
+<td>P3</td>
+<td>M</td>
+<td>Plataforma</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Paginação: âncoras <code>?pg=0&amp;</code>/<code>?pg=1&amp;</code>, title repetido, só 5 números visíveis</td>
+<td>Comprovado</td>
+<td>P3</td>
+<td>B</td>
+<td>Tema</td>
+</tr>
+<tr>
+<td>21</td>
+<td>robots.txt com Sitemap em http; changefreq/priority uniformes</td>
+<td>Comprovado</td>
+<td>P3</td>
+<td>B</td>
+<td>Plataforma</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Possível indexação "sem conteúdo" do host dcg</td>
+<td>Hipótese</td>
+<td>(incluído no item 1)</td>
+<td>—</td>
+<td>Verificar no Search Console</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. Estratégia recomendada</h2>
+<h3>4.1 Produtos esgotados (3.311 URLs)</h3>
+<p>Regra por estado. Todas são Boa prática.</p>
+<ol>
+<li><strong>Esgotado temporário (reposição prevista)</strong>: manter 200 e <code>index</code> e continuar no sitemap.
+   - JSON-LD <code>OutOfStock</code>, com botão "Avise-me".
+   - Bloco de alternativas em estoque da mesma subcategoria, para que a página volte a ter links de saída.
+   - Exibir no fim da listagem em vez de ocultar, ou ao menos linkar pela subcategoria.</li>
+<li><strong>Descontinuado com substituto</strong>: 301 para o produto equivalente ou para a subcategoria.</li>
+<li><strong>Descontinuado sem substituto e sem tráfego ou backlinks</strong> (confirmar no Search Console e no Analytics): 410, ou 404 real, e retirar do sitemap.</li>
+<li>Sitemap só com URLs canônicas, 200 e indexáveis, com <code>lastmod</code> igual à data da última alteração de preço, estoque ou conteúdo.</li>
+</ol>
+<p>Antes de aplicar, cruzar a lista <code>orphans.json</code> com cliques e impressões dos últimos 16 meses no Search Console.</p>
+<h3>4.2 Filtros e facetas</h3>
+<p>Hoje os filtros usam <code>#</code> e são invisíveis para o Google. Ao migrar para parâmetros ou caminhos:</p>
+<table>
+<thead>
+<tr>
+<th>Tipo de combinação</th>
+<th>Tratamento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Categoria ou subcategoria pura</td>
+<td>index, autocanônica, no sitemap</td>
+</tr>
+<tr>
+<td>1 faceta de alta demanda, curada (ex.: Louças + Porcelana Arita, Facas + marca Suncraft, Mesa + Hashi infantil)</td>
+<td>Página própria em URL limpa (<code>/loucas/porcelana-arita</code>), com title, H1 e texto únicos, index, no sitemap, linkada da categoria</td>
+</tr>
+<tr>
+<td>Marca</td>
+<td>Já existe <code>/marcas/{marca}</code> (265 no sitemap): manter index só para marcas com ≥ N produtos ativos e title "Produtos {Marca} | Tenman-ya"; noindex nas marcas vazias</td>
+</tr>
+<tr>
+<td>Qualquer outra combinação (2+ facetas, preço, cor, tamanho)</td>
+<td><code>noindex,follow</code>, canonical para a categoria-base, fora do sitemap, links sem <code>href</code> rastreável ou com parâmetros listados no robots.txt somente após o noindex ser processado</td>
+</tr>
+<tr>
+<td>Ordenação (<code>?ordenacao=</code>), visualização, quantidade por página</td>
+<td>canonical para a base (já ocorre); não linkar com href</td>
+</tr>
+<tr>
+<td>Paginação <code>?pg=N</code></td>
+<td>autocanônica (já ocorre), index, title com "Página N"</td>
+</tr>
+<tr>
+<td>Busca interna <code>/pesquisa</code></td>
+<td>manter <code>Disallow</code>; trocar a meta para <code>noindex</code> por coerência</td>
+</tr>
+</tbody>
+</table>
+<p>Critério para criar uma página de faceta: volume de busca comprovado (Search Console ou ferramenta de palavras-chave), ≥ 6 produtos ativos e conteúdo próprio. Nunca gerar combinações automaticamente.</p>
+<hr />
+<h2>5. Próximos passos (ordem sugerida)</h2>
+<ol>
+<li>Fechar a homologação com senha e remover as entradas de <code>/sitemap.xml</code> (item 1).</li>
+<li>Configurar o domínio canônico https e corrigir o template de JSON-LD e do breadcrumb (itens 4, 7, 8). É uma única passada no tema.</li>
+<li>Higiene do sitemap: retirar teste, login e listas internas; fazer 301 das políticas; corrigir duplicidade e ausentes com a Linx; adicionar lastmod (itens 3, 11).</li>
+<li>Definir a regra de esgotados e do 404 (itens 2, 5).</li>
+<li>Títulos vazios, H1 e menu com as 18 subcategorias (itens 6, 9, 10).</li>
+<li>Depois: alt, OG, descriptions e o projeto de facetas indexáveis (itens 12–18).</li>
+</ol>
+<p>Validação após as correções:
+- Search Console: relatórios Páginas, Sitemaps, Produtos/Fichas de comerciante e Navegação estrutural.
+- Teste de pesquisa aprimorada em 5 PDPs.
+- Rodar novamente <code>status150.js</code> e <code>orphans.py</code>.</p>
+<hr />
+<h2>6. Limitações</h2>
+<ul>
+<li>Sem acesso ao Search Console nem a logs: não se sabe o que está de fato indexado.</li>
+<li>A disponibilidade foi medida em amostras (30 órfãos, 15 linkados, 20 PDPs); a extrapolação para os 3.311 órfãos é Hipótese bem apoiada (30/30).</li>
+<li>Os "produtos linkados" incluem vitrines de recomendação nas listagens.</li>
+<li>A profundidade é um limite inferior; paginação além da página 5 exige cliques adicionais.</li>
+<li>A localização exata das configurações no admin Linx não foi verificada.</li>
+</ul>
+<h2>7. Arquivos</h2>
+<p>Pasta: <code>/tmp/claude-0/-home-user-uni9aluno-github-io/2f5f08a4-a898-52ce-8a6a-653d5b18690b/scratchpad/agents/seo/</code></p>
+<p>Dados:
+- <code>raw/</code>: robots.txt, todos os XML de sitemap (produção e índices de homologação).
+- <code>sitemap_urls.csv</code>: 6.104 linhas, com tipo, protocolo, prioridade e imagens.
+- <code>sitemap_summary.json</code>.
+- <code>status150.json</code>: amostra de 150 URLs com status, cadeia de redirecionamento, title, canonical, robots e H1.
+- <code>deep40.json</code>: auditoria on-page de 40 páginas.
+- <code>pdp_jsonld.csv</code>: validação do JSON-LD.
+- <code>links.json</code>: links da home e das categorias.
+- <code>listings.json</code>: 151 páginas de listagem.
+- <code>orphans.json</code>: órfãos e profundidade.
+- <code>avail_result.json</code>: disponibilidade de órfãos e linkados.
+- <code>variants_result.json</code>: variantes de URL.
+- <code>hlg_probe.json</code>: ambientes de homologação.</p>
+<p>Scripts: <code>sitemaps.js</code>, <code>analyze_sitemaps.py</code>, <code>status150.js</code>, <code>deep.js</code>, <code>ldcheck.py</code>, <code>links.js</code>, <code>listings.js</code>, <code>orphans.py</code>, <code>probe.js</code>, <code>probe2.js</code>.</p></div></details>
 <details class="apx" id="apx-conformidade"><summary>Privacidade e conformidade</summary><div class="apx-body"><h4>Conformidade – www.tenmanya.com.br (LGPD, CDC, Decreto 7.962/2013, governança de TI)</h4>
 <p>Coleta em 06/11/2026, das 23h25 às 23h45 (UTC). Ferramenta: Playwright <code>chromium.launch()</code> padrão, user agent padrão, viewport 1440×900. Cada estado de consentimento rodou num contexto novo, sem cookies. Não houve cadastro, login, preenchimento de formulário, compra, varredura nem tentativa de acesso a área restrita.</p>
 <p><strong>Aviso:</strong> este documento é uma análise técnica e de conformidade. Não é parecer jurídico. Os pontos marcados com <strong>[Jurídico]</strong> ou <strong>[DPO]</strong> precisam ser validados pelo Jurídico ou pelo Encarregado antes de qualquer decisão ou publicação.</p>
